@@ -1617,6 +1617,9 @@ img {
   }
 }
 @media (max-width: 720px) {
+  .nav-inner {
+    padding-right: 8px;
+  }
   .nav-links {
     position: fixed;
     inset: 64px 12px auto 12px;
@@ -1644,7 +1647,7 @@ img {
   .burger {
     display: flex;
     padding: 8px 0 8px 10px;
-    margin-right: calc(var(--pad) * -1 + 12px);
+    margin-right: 0;
   }
   .hire {
     display: none;
