@@ -605,10 +605,6 @@ img {
   align-items: center;
   gap: 10px;
   opacity: 0.5;
-  transition: opacity 0.2s ease;
-}
-.logo-slot:hover {
-  opacity: 0.85;
 }
 .logo-slot-mark {
   width: 26px;
@@ -635,12 +631,6 @@ img {
   border: 1px solid var(--border);
   border-radius: 18px;
   padding: 28px;
-  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s ease;
-}
-.stack-card:hover {
-  border-color: var(--accent-line);
-  transform: translateY(-3px);
-  background: var(--card-hover);
 }
 .stack-card-head {
   display: flex;
@@ -756,22 +746,6 @@ img {
   border-radius: 18px;
   padding: 30px 26px;
   overflow: hidden;
-  transition: all 0.25s ease;
-}
-.service-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(120% 80% at 0% 0%, var(--accent-soft), transparent 55%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-.service-card:hover {
-  border-color: var(--accent-line);
-  transform: translateY(-4px);
-}
-.service-card:hover::before {
-  opacity: 1;
 }
 .service-num {
   font-family: var(--font-mono);
