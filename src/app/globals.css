@@ -1,5 +1,7 @@
 /* ============ TOKENS ============ */
 :root {
+  color-scheme: dark;
+
   --accent: #9d5cff;
   --accent-hue: 270;
   --glow: 0.7;
@@ -12,10 +14,7 @@
   --accent-soft: color-mix(in oklab, var(--accent) 18%, transparent);
   --accent-line: color-mix(in oklab, var(--accent) 40%, transparent);
   --accent-text: color-mix(in oklab, var(--accent) 78%, white);
-}
 
-/* DARK (brand default) */
-:root[data-theme="dark"] {
   --bg: #07050c;
   --bg-2: #0d0a16;
   --bg-3: #130e20;
@@ -27,32 +26,6 @@
   --border: rgba(255, 255, 255, 0.09);
   --border-strong: rgba(255, 255, 255, 0.16);
   --chip-bg: rgba(255, 255, 255, 0.045);
-}
-
-/* LIGHT */
-:root[data-theme="light"] {
-  --bg: #f3f0f7;
-  --bg-2: #ffffff;
-  --bg-3: #faf8fd;
-  --card: #ffffff;
-  --card-hover: #ffffff;
-  --text: #18121f;
-  --text-dim: #5c5468;
-  --text-faint: #8b8398;
-  --border: rgba(24, 12, 32, 0.10);
-  --border-strong: rgba(24, 12, 32, 0.18);
-  --chip-bg: rgba(24, 12, 32, 0.04);
-}
-
-:root[data-theme="light"] .stack-card,
-:root[data-theme="light"] .service-card,
-:root[data-theme="light"] .work-card,
-:root[data-theme="light"] .article,
-:root[data-theme="light"] .contact-inner {
-  box-shadow: 0 1px 2px rgba(24, 12, 32, 0.04), 0 12px 32px -16px rgba(24, 12, 32, 0.18);
-}
-:root[data-theme="light"] .footer {
-  background: #ffffff;
 }
 
 * {
@@ -684,7 +657,6 @@ img {
   height: 100%;
   object-fit: cover;
   object-position: center 28%;
-  filter: saturate(1.02) contrast(1.02);
 }
 .about-portrait-glow {
   position: absolute;
@@ -698,7 +670,7 @@ img {
   background: linear-gradient(180deg, transparent 55%, color-mix(in oklab, var(--accent) calc(var(--glow) * 14%), transparent) 100%);
   pointer-events: none;
 }
-:root[data-theme="dark"] .about-portrait-img {
+.about-portrait-img {
   filter: saturate(0.96) contrast(1.03) brightness(0.97);
 }
 .facts {

@@ -7,40 +7,15 @@ import { usePathname } from "next/navigation";
 import type { SiteContent } from "@/lib/content";
 import { LOCALES, type Locale } from "@/lib/i18n";
 
-type Theme = "dark" | "light";
-
 export function Nav({ c, lang }: { c: SiteContent; lang: Locale }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [theme, setTheme] = useState<Theme>("dark");
-
-  useEffect(() => {
-    const stored =
-      typeof window !== "undefined" ? (localStorage.getItem("theme") as Theme | null) : null;
-    if (stored === "dark" || stored === "light") {
-      setTheme(stored);
-    } else {
-      const attr = document.documentElement.getAttribute("data-theme");
-      if (attr === "light") setTheme("light");
-    }
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const toggleTheme = useCallback(() => {
-    setTheme((prev) => {
-      const next: Theme = prev === "dark" ? "light" : "dark";
-      document.documentElement.setAttribute("data-theme", next);
-      try {
-        localStorage.setItem("theme", next);
-      } catch {}
-      return next;
-    });
   }, []);
 
   const pathname = usePathname() ?? "";
@@ -113,15 +88,6 @@ export function Nav({ c, lang }: { c: SiteContent; lang: Locale }) {
               </Link>
             ))}
           </div>
-          <button
-            type="button"
-            className="icon-btn"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            title="Theme"
-          >
-            {theme === "dark" ? "☾" : "☀"}
-          </button>
           <button type="button" className="btn btn-primary btn-sm hire" onClick={onHire}>
             {c.nav.cta}
           </button>
