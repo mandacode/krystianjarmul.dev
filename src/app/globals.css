@@ -323,17 +323,27 @@ img {
 }
 .hero-snake {
   position: absolute;
+  inset: 0;
+  object-fit: cover;
+  filter: saturate(calc(0.7 + var(--glow) * 0.7)) brightness(calc(0.55 + var(--glow) * 0.6));
+  transition: filter 0.3s ease;
+}
+.hero-snake-wide {
   height: 100%;
   width: auto;
   max-width: none;
   right: -4%;
   bottom: 0;
   top: 0;
-  object-fit: cover;
-  filter: saturate(calc(0.7 + var(--glow) * 0.7)) brightness(calc(0.55 + var(--glow) * 0.6));
+  inset: auto;
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 38%);
   mask-image: linear-gradient(90deg, transparent 0%, #000 38%);
-  transition: filter 0.3s ease;
+}
+.hero-snake-portrait {
+  display: none;
+  object-position: center bottom;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 35%);
+  mask-image: linear-gradient(180deg, transparent 0%, #000 35%);
 }
 .hero-bg-fade {
   position: absolute;
@@ -1666,9 +1676,12 @@ img {
   .work-thumb {
     max-width: 240px;
   }
-  .hero-snake {
-    right: -90%;
-    opacity: 0.62;
+  .hero-snake-wide {
+    display: none;
+  }
+  .hero-snake-portrait {
+    display: block;
+    opacity: 0.85;
   }
   .footer-inner,
   .footer-bottom {

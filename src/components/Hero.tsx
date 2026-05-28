@@ -11,8 +11,16 @@ export function Hero({ c }: { c: SiteContent }) {
           alt=""
           fill
           priority
-          sizes="100vw"
-          className="hero-snake"
+          sizes="(max-width: 720px) 0vw, 100vw"
+          className="hero-snake hero-snake-wide"
+        />
+        <Image
+          src="/assets/snake-portrait.png"
+          alt=""
+          fill
+          priority
+          sizes="(max-width: 720px) 100vw, 0vw"
+          className="hero-snake hero-snake-portrait"
         />
         <div className="hero-bg-fade" />
         <div className="hero-grid-overlay" />
