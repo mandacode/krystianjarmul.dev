@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { LINKS, STACK_PRIMARY, type SiteContent } from "@/lib/content";
-import { ArrowIcon, MailIcon } from "./icons";
+import { MailIcon } from "./icons";
 
 export function Hero({ c }: { c: SiteContent }) {
   return (
@@ -54,10 +54,6 @@ export function Hero({ c }: { c: SiteContent }) {
             <a className="btn btn-primary btn-lg" href={`mailto:${LINKS.email}`}>
               <MailIcon />
               <span>{c.hero.ctaPrimary}</span>
-            </a>
-            <a className="btn btn-ghost btn-lg" href="#work">
-              {c.hero.ctaSecondary}
-              <ArrowIcon />
             </a>
           </div>
         </div>
