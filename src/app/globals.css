@@ -1643,6 +1643,8 @@ img {
   }
   .burger {
     display: flex;
+    padding: 8px 0 8px 10px;
+    margin-right: calc(var(--pad) * -1 + 12px);
   }
   .hire {
     display: none;
@@ -1662,7 +1664,7 @@ img {
     max-width: 240px;
   }
   .hero-snake {
-    opacity: 0.62;
+    display: none;
   }
   .footer-inner,
   .footer-bottom {
