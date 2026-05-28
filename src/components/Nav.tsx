@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import type { SiteContent } from "@/lib/content";
 import { LOCALES, type Locale } from "@/lib/i18n";
 
@@ -42,9 +43,23 @@ export function Nav({ c, lang }: { c: SiteContent; lang: Locale }) {
     });
   }, []);
 
+  const pathname = usePathname() ?? "";
+  const isHome = pathname === `/${lang}` || pathname === `/${lang}/`;
+  const anchorHref = (id: string) => (isHome ? `#${id}` : `/${lang}#${id}`);
+
   const onHire = useCallback(() => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  }, []);
+    if (isHome) {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      window.location.href = `/${lang}#contact`;
+    }
+  }, [isHome, lang]);
+
+  const switchLangHref = (target: Locale) => {
+    if (!pathname) return `/${target}`;
+    const rest = pathname.replace(/^\/(pl|en)/, "");
+    return `/${target}${rest || ""}`;
+  };
 
   const items: ReadonlyArray<readonly [string, string]> = [
     ["about", c.nav.about],
@@ -58,7 +73,7 @@ export function Nav({ c, lang }: { c: SiteContent; lang: Locale }) {
   return (
     <header className={"nav" + (scrolled ? " nav-scrolled" : "")}>
       <div className="nav-inner">
-        <a className="brand" href="#top" onClick={() => setOpen(false)}>
+        <Link className="brand" href={`/${lang}`} onClick={() => setOpen(false)}>
           <Image
             src="/assets/logo-manda-purple.png"
             alt=""
@@ -68,14 +83,20 @@ export function Nav({ c, lang }: { c: SiteContent; lang: Locale }) {
             className="brand-logo"
           />
           <span className="brand-name">Krystian&nbsp;Jarmuł</span>
-        </a>
+        </Link>
 
         <nav className={"nav-links" + (open ? " open" : "")}>
-          {items.map(([id, label]) => (
-            <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>
-              {label}
-            </a>
-          ))}
+          {items.map(([id, label]) =>
+            isHome ? (
+              <a key={id} href={`#${id}`} onClick={() => setOpen(false)}>
+                {label}
+              </a>
+            ) : (
+              <Link key={id} href={anchorHref(id)} onClick={() => setOpen(false)}>
+                {label}
+              </Link>
+            ),
+          )}
         </nav>
 
         <div className="nav-actions">
@@ -83,7 +104,7 @@ export function Nav({ c, lang }: { c: SiteContent; lang: Locale }) {
             {LOCALES.map((l) => (
               <Link
                 key={l}
-                href={`/${l}`}
+                href={switchLangHref(l)}
                 className={"lang-btn" + (lang === l ? " active" : "")}
                 aria-current={lang === l ? "page" : undefined}
                 prefetch={false}

@@ -1,0 +1,85 @@
+---
+title: "JWT auth done correctly"
+description: "A practical guide to JWT auth in a Python SaaS — what the tutorials get wrong, and how to ship a setup that won't bite you later."
+date: "2026-02-18"
+tags: ["security", "auth", "jwt", "python", "django", "fastapi"]
+---
+
+## TL;DR
+
+- **Use JWTs for stateless service-to-service trust.** For browser sessions, use a normal session cookie. JWTs in `localStorage` are a footgun.
+- **Short-lived access tokens (5–15 min), refresh tokens stored server-side.** Rotate refresh on use.
+- **Always validate `aud`, `iss`, `exp`, and the signing key.** "It just works" tutorials skip most of this.
+- **Revocation is a system requirement, not a feature flag.** Design it in from day one.
+
+## The honest framing
+
+JWT is not an authentication system. It is a *token format*. People conflate the two and end up with footguns. The questions that matter are:
+
+1. Where is the token stored? (Cookie vs `localStorage`.)
+2. What does the token grant? (Single API, multiple services, federated identity.)
+3. How do I revoke it? (You will need to. Plan for it.)
+
+If you can answer those, the JWT library you pick almost doesn't matter.
+
+## Storage: cookie vs `localStorage`
+
+I see a lot of `localStorage.setItem('token', jwt)` in production code. It's how every tutorial does it. It's also how every cross-site scripting payload steals your sessions.
+
+The boring answer is the right one:
+
+- **Browser ↔ your own API on the same domain:** use an HttpOnly, Secure, SameSite=Lax (or Strict) cookie. The JWT is invisible to JS. You don't need anti-CSRF tokens with SameSite=Strict for most cases.
+- **Browser ↔ a third-party API:** you've signed up for harder problems. Use PKCE OAuth flows and short-lived tokens.
+- **Service ↔ service:** Authorization header. No cookies. No browser involved.
+
+If your token can be read by JS, treat it as already compromised.
+
+## Lifetime and rotation
+
+The default I ship:
+
+- Access token: **10 minutes**. Carries the user's id, the tenant id, a small list of scopes.
+- Refresh token: **30 days**. Stored server-side as a hashed value. Returns a new access + a new refresh on use. Old refresh is revoked.
+
+Refresh rotation is the key. If a refresh token leaks, the moment the attacker uses it, the legitimate user's next refresh fails and you can detect the compromise.
+
+## What to validate (every time)
+
+Every request that decodes a token must check:
+
+1. **Signature** — with the correct algorithm. Pin the algorithm in your verifier; don't trust `alg` from the header.
+2. **`exp`** — not expired.
+3. **`iss`** — the issuer is who you expect.
+4. **`aud`** — the audience matches this service.
+5. **`nbf`** — token isn't in the future (rare but worth catching clock skew).
+
+If you're using a library, make sure these are all on by default. Some are not.
+
+## Revocation: the part everyone skips
+
+Stateless tokens cannot be revoked by design. So you need a side channel.
+
+Two patterns work:
+
+1. **Short access tokens.** A 5-minute token doesn't *need* revocation in most threat models. Hand the problem to the refresh layer.
+2. **A revocation list.** A small Redis set keyed by `jti` (JWT ID) that your validator checks on every request. The set is small because tokens expire fast. This is the pragmatic answer when "5 minutes is too long" is a real requirement.
+
+Combine both for sensitive surfaces.
+
+## In Django
+
+`djangorestframework-simplejwt` is what I usually reach for. Configure it with:
+
+- Short access lifetime, longer refresh, **rotation enabled**.
+- A custom claim with `tenant_id` so multi-tenant filters can use it without a DB hit.
+- A blacklist app turned on, even if you don't think you need it day one.
+
+## In FastAPI
+
+`python-jose` or `pyjwt` directly, behind a FastAPI dependency that returns the decoded claims (or 401s). Keep the dependency thin; keep the validation logic in one place. Don't sprinkle `jwt.decode` calls across handlers.
+
+## What to remember
+
+JWT is fine. The mistakes are almost always in *how* you use it, not which library you picked. Short tokens, server-side refresh, cookie storage for browsers, validate everything, and design for revocation before you need it.
+
+If you do all five, your auth will hold up. If you skip any, you'll learn which one mattered most when it breaks.

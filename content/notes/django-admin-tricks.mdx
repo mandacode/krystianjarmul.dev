@@ -1,0 +1,59 @@
+---
+title: "Django admin tricks I use weekly"
+description: "Small, boring Django admin customizations that buy back hours every month."
+date: "2026-04-10"
+tags: ["django", "admin", "productivity"]
+---
+
+## TL;DR
+
+- `list_select_related` is free performance.
+- `autocomplete_fields` beats `raw_id_fields` for FK pickers with many rows.
+- A `readonly_fields` block stops accidental edits to billing/audit columns.
+- `actions` are a CLI you didn't have to ship.
+
+## `list_select_related`
+
+The single biggest perf win. If your changelist shows fields from a related model, set this and the N+1 disappears.
+
+```python
+class InvoiceAdmin(admin.ModelAdmin):
+    list_display = ("id", "tenant", "amount", "status")
+    list_select_related = ("tenant",)
+```
+
+## `autocomplete_fields`
+
+FK pickers with thousands of rows are unusable as dropdowns. Switching to autocomplete is one line:
+
+```python
+class DocumentAdmin(admin.ModelAdmin):
+    autocomplete_fields = ("tenant", "owner")
+```
+
+The target admin needs `search_fields` set. That's the only catch.
+
+## Read-only audit columns
+
+Audit fields (`created_at`, `created_by`, `stripe_customer_id`) should never be hand-edited from the admin. Make it impossible:
+
+```python
+readonly_fields = ("created_at", "created_by", "stripe_customer_id")
+```
+
+## Admin actions as throwaway CLIs
+
+Need a one-off "re-send onboarding email to these users"? Don't write a management command — write an action:
+
+```python
+@admin.action(description="Re-send onboarding email")
+def resend_onboarding(modeladmin, request, queryset):
+    for user in queryset.iterator():
+        send_onboarding_email.delay(user.id)
+```
+
+Five lines, gated by admin permissions, audit-logged by Django for free.
+
+## The taste rule
+
+If you find yourself shelling into production to fix a row by hand: you've discovered an admin feature you should have built.

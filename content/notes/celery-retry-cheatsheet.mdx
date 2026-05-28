@@ -1,0 +1,44 @@
+---
+title: "Celery retry cheatsheet"
+description: "The five retry knobs I always reach for in a production Celery setup."
+date: "2026-04-30"
+tags: ["celery", "python", "background-jobs"]
+---
+
+## TL;DR
+
+- `autoretry_for=(SomeError,)` for the "obviously transient" cases.
+- `retry_backoff=True, retry_backoff_max=600, retry_jitter=True` to avoid thundering herds.
+- `max_retries=N` — always set it. The default is too lenient.
+- A dead-letter queue (`Task.on_failure`) for the cases retries can't save.
+
+## The pattern
+
+```python
+@shared_task(
+    bind=True,
+    autoretry_for=(requests.RequestException,),
+    retry_backoff=True,
+    retry_backoff_max=600,
+    retry_jitter=True,
+    max_retries=5,
+)
+def fetch_invoice(self, invoice_id: int):
+    invoice = Invoice.objects.get(pk=invoice_id)
+    response = http.get(invoice.url, timeout=10)
+    response.raise_for_status()
+    invoice.store_payload(response.content)
+```
+
+Five lines of config kill 90% of the retry bugs I see in code review.
+
+## The mistakes I keep seeing
+
+- **Retrying on `Exception`.** You'll mask real bugs. Be specific.
+- **No jitter.** Twenty workers waking up at the same second on the same backoff schedule is a self-DoS.
+- **No `max_retries`.** Tasks that can't succeed will pile up forever.
+- **No dead-letter handling.** When retries are exhausted, *something* has to notice. Log + alert + park the job somewhere a human can see.
+
+## What "transient" really means
+
+A retry is correct when the failure is independent of your input. Network blips, 503s, lock contention — retry. `ValidationError`, `IntegrityError`, `KeyError` — fix the code; retrying just delays the bug report.

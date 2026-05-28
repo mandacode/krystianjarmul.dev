@@ -1,0 +1,50 @@
+---
+title: "Django vs FastAPI for SaaS MVPs"
+description: "Which Python framework gets you to paying users faster — and where each pays you back later."
+date: "2026-04-12"
+tags: ["python", "django", "fastapi", "saas", "architecture"]
+---
+
+## TL;DR
+
+- **Django** ships you an MVP in days because auth, admin, ORM and migrations are already there.
+- **FastAPI** wins when the product is API-first, async-heavy, or fronted by a separate SPA you control end-to-end.
+- For most early-stage SaaS, the right answer is "boring Django + a small FastAPI service when you actually need async I/O."
+
+## The honest framing
+
+I get asked this every other week, usually by someone two weeks from running out of runway. Both frameworks are excellent. The choice rarely matters as much as the founder thinks. What does matter: how many production-grade decisions the framework makes for you so you can spend brain cycles on the product.
+
+Django makes a *lot* of decisions. Auth, sessions, admin, ORM, migrations, forms, CSRF, an opinionated project layout — it's all in the box. You'll fight the box occasionally, but you trade that for shipping.
+
+FastAPI makes very few decisions. You pick the ORM (or none). You pick auth. You pick the project layout. You wire DI yourself. The upside: you get exactly the system you want, with first-class async and Pydantic models that double as OpenAPI docs. The downside: you wrote more glue than you think.
+
+## When Django is the right call
+
+- You're building a multi-tenant SaaS with user accounts, an admin UI, and a Postgres-shaped data model.
+- You want Stripe + auth + email templates wired up by end of week one.
+- The team is small and you need conventions more than flexibility.
+- "Boring" sounds like a feature, not a flaw.
+
+## When FastAPI is the right call
+
+- The product is the API. Customers consume it from their own apps.
+- You're doing real async I/O — webhooks, streaming, LLM calls, fan-out to multiple services.
+- You already have a separate frontend team owning their own stack.
+- You want OpenAPI docs as a product surface, not an afterthought.
+
+## The combo that actually wins
+
+In practice, the SaaS apps I ship look like this:
+
+- **Django** for the product backbone: auth, billing, admin, the rendered HTML pages that don't need to be fancy, the long tail of CRUD.
+- **A small FastAPI service** for the things Django doesn't love — webhook ingestion, LLM streaming, anything async-heavy.
+- Both talking to the same Postgres. Both deployed the same way. Background work in Celery, which both can enqueue.
+
+This isn't elegant. It's pragmatic. You don't have to pick a side.
+
+## What I'd choose today
+
+If I'm starting a SaaS MVP tomorrow with one engineer and a deadline: **Django, every time.** I'll add FastAPI when an actual async bottleneck shows up — not before.
+
+The framework isn't what's slowing you down. The decisions you haven't made yet are.

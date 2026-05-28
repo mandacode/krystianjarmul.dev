@@ -1,0 +1,77 @@
+---
+title: "Multi-tenant architecture in Django"
+description: "Three patterns for tenant isolation in a Django SaaS — and why I default to the boring one."
+date: "2026-03-22"
+tags: ["django", "saas", "multi-tenancy", "postgres", "architecture"]
+---
+
+## TL;DR
+
+- **Shared schema + tenant_id column** is the boring default. It scales further than you think.
+- **Schema-per-tenant** (search_path tricks) is tempting but introduces operational pain you don't want at MVP stage.
+- **Database-per-tenant** is for compliance edge cases, not your default.
+
+## What "multi-tenant" actually means in practice
+
+Multi-tenancy is one of those terms where everyone agrees on the word and nobody agrees on the implementation. For a Django SaaS, the question really is: *how strictly do you isolate one customer's data from another's, and at what cost?*
+
+Three patterns dominate.
+
+### 1. Shared schema, tenant_id everywhere
+
+Every row that belongs to a customer carries a `tenant_id` (or `organization_id`, `workspace_id`). Every query filters by it. Foreign keys point inside the tenant.
+
+```python
+class Document(models.Model):
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
+    title = models.CharField(max_length=255)
+    body = models.TextField()
+
+    class Meta:
+        indexes = [models.Index(fields=["tenant", "-created_at"])]
+```
+
+You enforce it three ways:
+
+1. A **default manager** that auto-filters by the current request's tenant.
+2. A **middleware** that pins the current tenant on the request and on a thread-local / contextvar.
+3. **Database-level guard rails**: composite indexes, and ideally a Postgres row-level security policy for the paranoid case.
+
+This is what I default to. It's boring. It works to thousands of tenants. Backups are one database. Migrations are one operation.
+
+### 2. Schema-per-tenant
+
+Each tenant gets a Postgres schema. You flip the `search_path` per request. Libraries like `django-tenants` automate this.
+
+Pros: stronger isolation, easier to delete a tenant (drop a schema), easier compliance story.
+
+Cons: migrations across N schemas, connection pooler complications, "shared" tables (e.g. plans, feature flags) need careful placement, and you can no longer ask product questions across tenants without writing custom SQL.
+
+I reach for this when a customer asks for it in a contract — never preemptively.
+
+### 3. Database-per-tenant
+
+Each tenant gets a database. This is the compliance hammer. Enterprise B2B, regulated industries, "our data cannot share a server with anyone else's."
+
+The cost: ops. You're now running fleet-of-databases. Migrations are jobs. Onboarding is a job. Backups are jobs. Don't sign up for this unless someone is paying you specifically for it.
+
+## The shared-schema gotchas to actually plan for
+
+The pattern that works long-term still has traps. Things I've been burned by:
+
+- **Forgetting the filter once.** A single endpoint that calls `.objects.all()` instead of `.objects.for_tenant(t)` will leak. Build it into the manager and lint for raw `.objects` calls in code review.
+- **Index ordering.** `(tenant_id, created_at DESC)` is what you want — not `(created_at, tenant_id)`. Postgres won't tell you it's wrong; the query plan will.
+- **Pagination across tenants.** Admin views need to operate cross-tenant. Keep a separate "superuser manager" for these and audit who uses it.
+- **Soft deletes.** Tenant deletion is rarely instant. Have a strategy for "tenant marked deleted, data still around" or you'll regret it during a customer churn event.
+
+## What I'd build today
+
+A new Django SaaS, day one, gets:
+
+- A `Tenant` model with a slug, a name, a plan FK.
+- A `TenantMembership` model joining users to tenants with a role.
+- A middleware that resolves the current tenant from subdomain *or* path prefix.
+- A `TenantManager` on every model that carries tenant-scoped data.
+- One Postgres database. One schema. Composite indexes on `(tenant_id, ...)` everywhere.
+
+That gets you to 10,000 tenants. By then, you'll know which of them is special enough to deserve their own schema.

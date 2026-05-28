@@ -1,7 +1,10 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { LOCALES, isLocale, type Locale } from "@/lib/i18n";
-import { getContent, LINKS } from "@/lib/content";
+import { getContent } from "@/lib/content";
+import { createMetadata } from "@/lib/metadata";
+import { JsonLdScript, personSchema, websiteSchema } from "@/lib/schema";
+import { listContent } from "@/lib/mdx";
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
 import { Clients } from "@/components/Clients";
@@ -28,25 +31,12 @@ export async function generateMetadata({
   const { lang } = await params;
   if (!isLocale(lang)) return {};
   const c = getContent(lang);
-  return {
+  return createMetadata({
     title: c.meta.title,
     description: c.meta.description,
-    alternates: {
-      canonical: `/${lang}`,
-      languages: {
-        pl: "/pl",
-        en: "/en",
-        "x-default": "/pl",
-      },
-    },
-    openGraph: {
-      type: "website",
-      url: `/${lang}`,
-      title: c.meta.title,
-      description: c.meta.description,
-      locale: lang === "pl" ? "pl_PL" : "en_US",
-    },
-  };
+    path: "",
+    locale: lang,
+  });
 }
 
 export default async function LocaleHome({ params }: { params: Promise<Params> }) {
@@ -54,34 +44,12 @@ export default async function LocaleHome({ params }: { params: Promise<Params> }
   if (!isLocale(lang)) notFound();
   const locale: Locale = lang;
   const c = getContent(locale);
-
-  const personJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Krystian Jarmuł",
-    jobTitle: "Senior Software Engineer",
-    url: "https://krystianjarmul.dev",
-    email: `mailto:${LINKS.email}`,
-    sameAs: [LINKS.github, LINKS.linkedin],
-    knowsAbout: [
-      "Python",
-      "Django",
-      "FastAPI",
-      "React",
-      "Next.js",
-      "PostgreSQL",
-      "SaaS architecture",
-      "API design",
-    ],
-  };
+  const blog = await listContent("blog");
 
   return (
     <div className="page">
       <LangSync lang={locale} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-      />
+      <JsonLdScript data={[personSchema(), websiteSchema()]} />
       <Nav c={c} lang={locale} />
       <main>
         <Hero c={c} />
@@ -89,8 +57,8 @@ export default async function LocaleHome({ params }: { params: Promise<Params> }
         <Stack c={c} />
         <About c={c} />
         <Services c={c} />
-        <Work c={c} />
-        <Writing c={c} />
+        <Work c={c} lang={locale} />
+        <Writing c={c} lang={locale} entries={blog} />
         <Contact c={c} />
       </main>
       <Footer c={c} />

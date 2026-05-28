@@ -1,8 +1,10 @@
+import Link from "next/link";
 import { LINKS, type SiteContent } from "@/lib/content";
+import type { Locale } from "@/lib/i18n";
 import { ArrowIcon } from "./icons";
 import { Eyebrow } from "./icons";
 
-export function Work({ c }: { c: SiteContent }) {
+export function Work({ c, lang }: { c: SiteContent; lang: Locale }) {
   return (
     <section className="section" id="work">
       <div className="section-head reveal">
@@ -42,9 +44,9 @@ export function Work({ c }: { c: SiteContent }) {
         ))}
       </div>
       <div className="section-foot reveal">
-        <a className="text-link" href={LINKS.github} target="_blank" rel="noreferrer noopener">
+        <Link className="text-link" href={`/${lang}/projects`}>
           {c.work.cta} <ArrowIcon />
-        </a>
+        </Link>
       </div>
     </section>
   );

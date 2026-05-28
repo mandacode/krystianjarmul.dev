@@ -1,0 +1,66 @@
+---
+title: "FastAPI testing snippets"
+description: "The small set of testing patterns I lean on for FastAPI services in production."
+date: "2026-03-08"
+tags: ["fastapi", "testing", "python", "pytest"]
+---
+
+## TL;DR
+
+- Use `TestClient` for sync tests, `httpx.AsyncClient` for async.
+- Override dependencies with `app.dependency_overrides` — don't monkeypatch.
+- Build a single `client` fixture and let every test reuse it.
+- Test the boundary, not the framework.
+
+## The base fixture
+
+```python
+import pytest
+from fastapi.testclient import TestClient
+from app.main import app
+from app.deps import get_db
+
+@pytest.fixture
+def client(db_session):
+    app.dependency_overrides[get_db] = lambda: db_session
+    with TestClient(app) as c:
+        yield c
+    app.dependency_overrides.clear()
+```
+
+Two things going on:
+
+1. The DB dependency is replaced with the test session (rolled back per test).
+2. The lifespan runs because `TestClient` is used as a context manager — startup hooks fire, shutdown hooks fire.
+
+## Async tests with `httpx`
+
+```python
+import pytest
+import httpx
+from app.main import app
+
+@pytest.mark.asyncio
+async def test_stream_endpoint():
+    transport = httpx.ASGITransport(app=app)
+    async with httpx.AsyncClient(transport=transport, base_url="http://t") as ac:
+        r = await ac.get("/v1/stream")
+    assert r.status_code == 200
+```
+
+Use this when you have streaming endpoints, websocket handshakes, or just want to assert on async I/O without `TestClient`'s sync wrapper.
+
+## What to actually test
+
+- **The request/response contract.** Schema in, schema out, the right status codes for each.
+- **Auth and authorization.** Every protected endpoint has at least one "no token = 401" test.
+- **The unhappy paths.** Validation errors, business rule violations, missing resources.
+
+What I don't test:
+
+- That FastAPI parses a path parameter. The framework already tests that.
+- That Pydantic rejects a bad shape. Same.
+
+## The boundary
+
+A FastAPI test that calls all the way down to the database is an integration test, and that's fine. A FastAPI test that mocks everything below the handler is testing nothing useful. Pick the boundary that matches the value of the test.
