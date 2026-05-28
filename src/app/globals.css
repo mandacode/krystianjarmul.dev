@@ -1664,7 +1664,8 @@ img {
     max-width: 240px;
   }
   .hero-snake {
-    display: none;
+    right: -90%;
+    opacity: 0.62;
   }
   .footer-inner,
   .footer-bottom {
