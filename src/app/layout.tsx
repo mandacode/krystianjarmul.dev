@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     images: ["/assets/og.png"],
   },
   icons: {
-    icon: "/assets/logo-manda-purple.png",
+    icon: "/assets/favicon.png",
   },
 };
 
