@@ -4,4 +4,5 @@ export const SITE = {
   author: "Krystian Jarmuł",
   jobTitle: "Senior Software Engineer",
   twitter: undefined as string | undefined,
+  ogImage: "/assets/og.png",
 } as const;

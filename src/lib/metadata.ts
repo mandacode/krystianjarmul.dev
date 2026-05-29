@@ -37,7 +37,8 @@ export function createMetadata(args: CreateMetadataArgs): Metadata {
     LOCALES.map((l) => [l, localizedPath(l, path)]),
   ) as Record<Locale, string>;
 
-  const images = ogImage ? [{ url: ogImage }] : undefined;
+  const resolvedOgImage = ogImage ?? SITE.ogImage;
+  const images = [{ url: resolvedOgImage, width: 1200, height: 630, alt: title }];
 
   return {
     title,
@@ -70,7 +71,7 @@ export function createMetadata(args: CreateMetadataArgs): Metadata {
       card: "summary_large_image",
       title,
       description,
-      images: ogImage ? [ogImage] : undefined,
+      images: [resolvedOgImage],
     },
   };
 }
