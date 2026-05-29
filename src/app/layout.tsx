@@ -39,12 +39,21 @@ export const metadata: Metadata = {
     description:
       "Software engineer focused on shipping backend-heavy SaaS products. Python · Django · FastAPI · React · Next.js",
     url: "/",
+    images: [
+      {
+        url: "/assets/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Krystian Jarmuł — Senior Software Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Krystian Jarmuł — Senior Software Engineer",
     description:
       "Software engineer focused on shipping backend-heavy SaaS products. Python · Django · FastAPI · React · Next.js",
+    images: ["/assets/og.png"],
   },
   icons: {
     icon: "/assets/logo-manda-purple.png",
