@@ -1628,7 +1628,9 @@ img {
 }
 @media (max-width: 720px) {
   .nav-inner {
-    padding-right: 0;
+    /* symmetric edge padding so the burger sits as far from the right edge
+       as the logo sits from the left edge */
+    padding-right: 16px;
     padding-left: 16px;
   }
   .nav-links {
@@ -1657,11 +1659,16 @@ img {
   }
   .burger {
     display: flex;
-    padding: 10px 12px 10px 14px;
+    /* no right padding: the bars align with the nav-inner content edge (16px),
+       mirroring the logo's left inset */
+    padding: 10px 0 10px 10px;
     margin-right: 0;
   }
   .nav-actions {
-    gap: 8px;
+    /* nav-links is position:fixed on mobile, so its margin-left:auto no longer
+       pushes the actions over — pin them to the right edge explicitly */
+    margin-left: auto;
+    gap: 16px;
   }
   .hire {
     display: none;
