@@ -1,11 +1,9 @@
-import Link from "next/link";
 import Image from "next/image";
 import { LINKS, type SiteContent } from "@/lib/content";
-import type { Locale } from "@/lib/i18n";
 import { ArrowIcon } from "./icons";
 import { Eyebrow } from "./icons";
 
-export function Work({ c, lang }: { c: SiteContent; lang: Locale }) {
+export function Work({ c }: { c: SiteContent }) {
   return (
     <section className="section" id="work">
       <div className="section-head reveal">
@@ -48,9 +46,9 @@ export function Work({ c, lang }: { c: SiteContent; lang: Locale }) {
         ))}
       </div>
       <div className="section-foot reveal">
-        <Link className="text-link" href={`/${lang}/projects`}>
+        <a className="text-link" href={LINKS.linkedin} target="_blank" rel="noreferrer noopener">
           {c.work.cta} <ArrowIcon />
-        </Link>
+        </a>
       </div>
     </section>
   );

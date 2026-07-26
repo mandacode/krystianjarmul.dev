@@ -70,7 +70,7 @@ export default async function ProjectsPage({ params }: { params: Promise<Params>
                 </div>
                 <div className="work-body">
                   <h2 className="work-title">{w.t}</h2>
-                  <p className="work-desc">{w.d}</p>
+                  <p className="work-desc">{w.dLong ?? w.d}</p>
                   <ul className="chip-list small">
                     {w.stack.map((s) => (
                       <li className="chip" key={s}>
@@ -87,7 +87,7 @@ export default async function ProjectsPage({ params }: { params: Promise<Params>
             ))}
           </div>
           <div className="section-foot">
-            <a className="text-link" href={LINKS.github} target="_blank" rel="noreferrer noopener">
+            <a className="text-link" href={LINKS.linkedin} target="_blank" rel="noreferrer noopener">
               {pages.projects.extra} <ArrowIcon />
             </a>
           </div>

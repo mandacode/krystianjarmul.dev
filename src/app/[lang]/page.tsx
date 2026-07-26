@@ -57,7 +57,7 @@ export default async function LocaleHome({ params }: { params: Promise<Params> }
         <Stack c={c} />
         <About c={c} />
         <Services c={c} />
-        <Work c={c} lang={locale} />
+        <Work c={c} />
         <Writing c={c} lang={locale} entries={blog} />
         <Contact c={c} />
       </main>

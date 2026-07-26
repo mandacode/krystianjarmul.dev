@@ -583,24 +583,32 @@ img {
   justify-content: center;
   gap: clamp(16px, 4vw, 44px);
 }
-.logo-slot {
+.client-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  opacity: 0.5;
+  gap: 11px;
+  opacity: 0.62;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.logo-slot-mark {
-  width: 26px;
+.client-logo:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.client-mark {
+  width: auto;
   height: 26px;
-  border-radius: 7px;
-  background: repeating-linear-gradient(45deg, var(--text-faint) 0 2px, transparent 2px 6px);
-  opacity: 0.55;
+  max-width: 34px;
+  object-fit: contain;
 }
-.logo-slot-text {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  letter-spacing: 0.18em;
-  color: var(--text-faint);
+.client-name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: var(--text-dim);
+}
+.client-logo:hover .client-name {
+  color: var(--text);
 }
 
 /* ============ STACK ============ */

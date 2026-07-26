@@ -21,6 +21,7 @@ export type WorkItem = {
   t: string;
   tag: string;
   d: string;
+  dLong?: string;
   stack: string[];
   outcome: string;
   logo?: string;
@@ -122,7 +123,7 @@ const en: SiteContent = {
     eyebrow: "Senior Software Engineer",
     headlineA: "Shipping backend-heavy",
     headlineB: "SaaS products.",
-    sub: "Software engineer focused on production-ready web products, APIs and AI-enabled systems — from database to deployment.",
+    sub: "Software engineer focused on production-ready web products, APIs and AI-enabled systems - from database to deployment.",
     ctaPrimary: "Get in touch",
     ctaSecondary: "View work",
     stackLabel: "Working with",
@@ -145,8 +146,8 @@ const en: SiteContent = {
     eyebrow: "About",
     title: "Python product engineer who can ship across the stack.",
     body: [
-      "I design and build production-ready web products — the kind that handle real users, real money and real data. My home is the backend: clean APIs, solid data models, background jobs and auth that doesn't leak.",
-      "But I ship outcomes, not just endpoints. I'm comfortable taking a SaaS idea from an empty repo to a deployed product — backend, frontend, billing and infrastructure included.",
+      "I design and build production-ready web products - the kind that handle real users, real money and real data. My home is the backend: clean APIs, solid data models, background jobs and auth that doesn't leak.",
+      "But I ship outcomes, not just endpoints. I'm comfortable taking a SaaS idea from an empty repo to a deployed product - backend, frontend, billing and infrastructure included.",
     ],
     facts: [
       { k: "Focus", v: "Backend-heavy SaaS" },
@@ -158,12 +159,12 @@ const en: SiteContent = {
   services: {
     eyebrow: "Services",
     title: "How I can help",
-    sub: "Engagements built around shipping software outcomes — not billing hours.",
+    sub: "Engagements built around shipping software outcomes - not billing hours.",
     items: [
       { t: "Backend systems", d: "APIs, data models, background jobs and the unglamorous plumbing that keeps a product reliable at scale." },
       { t: "SaaS development", d: "From empty repo to deployed product: auth, billing, multi-tenancy, admin panels and the full delivery loop." },
       { t: "API design", d: "Versioned, documented, well-tested REST APIs that frontend teams and integrations actually enjoy using." },
-      { t: "AI product engineering", d: "LLM-enabled features and document workflows wired into real products — pragmatic, evaluated, in production." },
+      { t: "AI product engineering", d: "LLM-enabled features and document workflows wired into real products - pragmatic, evaluated, in production." },
       { t: "Technical consulting", d: "Architecture reviews, stack decisions and pragmatic guidance for teams scaling a Python codebase." },
     ],
   },
@@ -172,13 +173,10 @@ const en: SiteContent = {
     title: "A few things I've built",
     sub: "Project teardowns: the problem, the stack and the outcome.",
     items: [
-      { t: "Travatar", tag: "SaaS · AI", d: "AI platform for brand-visibility and traffic-quality analytics — with an AI Growth Coworker, GEO and AI-visibility audit modules, and traffic analysis that separates real visitors from bots and crawlers.", stack: ["Python", "Django", "FastAPI", "Postgres", "Celery", "Kafka", "Prefect"], outcome: "Brand visibility in the AI era", logo: "/assets/travatar.svg", url: "https://travatar.ai/en" },
-      { t: "Cannabase", tag: "Data · AI", d: "Medical-cannabis data platform for Poland: a strain catalog with terpene and THC/CBD profiles, near-real-time pharmacy availability and prices, prescribing clinics, and Dendi — an AI assistant (RAG) that checks local availability and suggests similar-profile alternatives.", stack: ["Python", "FastAPI", "SQLAlchemy", "Postgres + pgvector", "Next.js", "Docker"], outcome: "A fragmented market, unified", logo: "/assets/cannabase.svg", url: "https://cannabase.pl/" },
-      { t: "AI document workflow app", tag: "SaaS · AI", d: "Multi-step document processing with an LLM pipeline, queued workers and a React dashboard.", stack: ["FastAPI", "Celery", "React", "Postgres"], outcome: "From prototype to paying users" },
-      { t: "Multi-tenant SaaS platform", tag: "Backend · SaaS", d: "Tenant isolation, role-based access and Stripe billing on a single maintainable Django codebase.", stack: ["Django", "Postgres", "Stripe", "Redis"], outcome: "Single codebase, many tenants" },
-      { t: "Internal API platform", tag: "APIs · DevEx", d: "Versioned API gateway with auth, rate limiting and auto-generated OpenAPI docs.", stack: ["FastAPI", "Docker", "AWS", "CI/CD"], outcome: "Self-serve for product teams" },
+      { t: "Travatar", tag: "SaaS · AI", d: "AI platform for brand-visibility and traffic-quality analytics - with an AI Growth Coworker, GEO and AI-visibility audit modules, and traffic analysis that separates real visitors from bots and crawlers.", dLong: "Travatar answers a question classic analytics no longer can: how visible is your brand inside AI answers, and how much of your traffic is actually human? The platform runs scheduled prompt sets against LLMs and tracks where a brand appears, in what context and against which competitors, then turns that into GEO and AI-visibility audits with concrete fixes. On the traffic side it classifies every session against bot and crawler signatures, so reporting is based on real visitors instead of inflated numbers. On top of it sits the AI Growth Coworker - an assistant that reads the collected data and proposes the next moves. I work on the backend: Django and FastAPI services, the Postgres + pgvector data model, Celery and Prefect pipelines that keep audits running on schedule, and Kafka streaming the traffic events.", stack: ["Python", "Django", "FastAPI", "Postgres + pgvector", "Celery", "Kafka", "Prefect"], outcome: "Brand visibility in the AI era", logo: "/assets/travatar.svg", url: "https://travatar.ai/en" },
+      { t: "Cannabase", tag: "Data · AI", d: "Medical-cannabis data platform for Poland: a strain catalog with terpene and THC/CBD profiles, near-real-time pharmacy availability and prices, prescribing clinics, and Dendi - an AI assistant (RAG) that checks local availability and suggests similar-profile alternatives.", dLong: "Poland's medical-cannabis market is scattered across pharmacy price lists, producer PDFs and closed patient groups - Cannabase pulls it into one place. The catalog covers strains with terpene profiles and THC/CBD ratios, linked to near-real-time availability and prices in pharmacies across the country, plus a directory of clinics that issue prescriptions. Automated ingestion and normalization jobs reconcile inconsistent naming between producers and pharmacies, so the same product does not appear five times under five spellings. Dendi, the built-in AI assistant, runs a RAG pipeline over that catalog: it answers questions about a given strain, checks what is available near the patient and suggests alternatives with a similar terpene and cannabinoid profile when something is out of stock. Built on FastAPI and SQLAlchemy with Postgres + pgvector for embeddings, and a Next.js frontend.", stack: ["Python", "FastAPI", "SQLAlchemy", "Postgres + pgvector", "Next.js", "Docker"], outcome: "A fragmented market, unified", logo: "/assets/cannabase.svg", url: "https://cannabase.pl/" },
     ],
-    cta: "See more on GitHub",
+    cta: "More projects on LinkedIn",
   },
   writing: {
     eyebrow: "Writing",
@@ -204,7 +202,7 @@ const en: SiteContent = {
     rights: "All rights reserved.",
   },
   meta: {
-    title: "Krystian Jarmuł — Senior Software Engineer",
+    title: "Krystian Jarmuł - Senior Software Engineer",
     description:
       "Software engineer focused on shipping backend-heavy SaaS products. Python · Django · FastAPI · React · Next.js",
   },
@@ -225,7 +223,7 @@ const pl: SiteContent = {
     eyebrow: "Senior Software Engineer",
     headlineA: "Tworzę produkty SaaS",
     headlineB: "z mocnym backendem.",
-    sub: "Inżynier oprogramowania skupiony na gotowych do produkcji produktach webowych, API i systemach z AI — od bazy danych po wdrożenie.",
+    sub: "Inżynier oprogramowania skupiony na gotowych do produkcji produktach webowych, API i systemach z AI - od bazy danych po wdrożenie.",
     ctaPrimary: "Napisz do mnie",
     ctaSecondary: "Zobacz projekty",
     stackLabel: "Pracuję z",
@@ -248,8 +246,8 @@ const pl: SiteContent = {
     eyebrow: "O mnie",
     title: "Python product engineer, który dowozi w całym stacku.",
     body: [
-      "Projektuję i buduję gotowe do produkcji produkty webowe — takie, które obsługują realnych użytkowników, realne pieniądze i realne dane. Mój dom to backend: czyste API, solidne modele danych, zadania w tle i autoryzacja, która nie przecieka.",
-      "Ale dowożę efekty, nie tylko endpointy. Czuję się swobodnie, prowadząc pomysł na SaaS od pustego repozytorium do wdrożonego produktu — z backendem, frontendem, płatnościami i infrastrukturą włącznie.",
+      "Projektuję i buduję gotowe do produkcji produkty webowe - takie, które obsługują realnych użytkowników, realne pieniądze i realne dane. Mój dom to backend: czyste API, solidne modele danych, zadania w tle i autoryzacja, która nie przecieka.",
+      "Ale dowożę efekty, nie tylko endpointy. Czuję się swobodnie, prowadząc pomysł na SaaS od pustego repozytorium do wdrożonego produktu - z backendem, frontendem, płatnościami i infrastrukturą włącznie.",
     ],
     facts: [
       { k: "Specjalizacja", v: "SaaS z mocnym backendem" },
@@ -261,12 +259,12 @@ const pl: SiteContent = {
   services: {
     eyebrow: "Usługi",
     title: "Jak mogę pomóc",
-    sub: "Współpraca nastawiona na dowiezienie efektu — nie na rozliczanie godzin.",
+    sub: "Współpraca nastawiona na dowiezienie efektu - nie na rozliczanie godzin.",
     items: [
       { t: "Systemy backendowe", d: "API, modele danych, zadania w tle i cała mniej efektowna hydraulika, która utrzymuje produkt w ryzach przy skali." },
       { t: "Budowa SaaS", d: "Od pustego repo do wdrożonego produktu: autoryzacja, płatności, multi-tenancy, panele admina i pełny cykl dostarczania." },
       { t: "Projektowanie API", d: "Wersjonowane, udokumentowane i przetestowane REST API, z którego zespoły frontendowe i integracje korzystają z przyjemnością." },
-      { t: "Produkty z AI", d: "Funkcje oparte o LLM i workflow dokumentów wpięte w realne produkty — pragmatycznie, z ewaluacją, na produkcji." },
+      { t: "Produkty z AI", d: "Funkcje oparte o LLM i workflow dokumentów wpięte w realne produkty - pragmatycznie, z ewaluacją, na produkcji." },
       { t: "Konsultacje techniczne", d: "Przeglądy architektury, decyzje o stacku i pragmatyczne wsparcie dla zespołów skalujących kod w Pythonie." },
     ],
   },
@@ -275,13 +273,10 @@ const pl: SiteContent = {
     title: "Kilka rzeczy, które zbudowałem",
     sub: "Teardown projektów: problem, stack i efekt.",
     items: [
-      { t: "Travatar", tag: "SaaS · AI", d: "Platforma AI do analizy widoczności marki i jakości ruchu — z AI Growth Coworkerem, modułami GEO i audytu widoczności w AI oraz analizą odróżniającą realny ruch od botów i crawlerów.", stack: ["Python", "Django", "FastAPI", "Postgres", "Celery", "Kafka", "Prefect"], outcome: "Widoczność marki w świecie AI", logo: "/assets/travatar.svg", url: "https://travatar.ai/en" },
-      { t: "Cannabase", tag: "Data · AI", d: "Platforma danych o medycznej marihuanie w Polsce: katalog odmian z profilami terpenowymi i THC/CBD, dostępność i ceny w aptekach niemal na żywo, kliniki wystawiające recepty oraz Dendi — asystent AI (RAG), który sprawdza dostępność w okolicy i proponuje zamienniki o zbliżonym profilu.", stack: ["Python", "FastAPI", "SQLAlchemy", "Postgres + pgvector", "Next.js", "Docker"], outcome: "Rozproszony rynek w jednym miejscu", logo: "/assets/cannabase.svg", url: "https://cannabase.pl/" },
-      { t: "Aplikacja do workflow dokumentów z AI", tag: "SaaS · AI", d: "Wieloetapowe przetwarzanie dokumentów z pipeline'em LLM, kolejką workerów i dashboardem w React.", stack: ["FastAPI", "Celery", "React", "Postgres"], outcome: "Od prototypu do płacących użytkowników" },
-      { t: "Platforma SaaS multi-tenant", tag: "Backend · SaaS", d: "Izolacja tenantów, dostęp oparty o role i płatności Stripe na jednej, łatwej w utrzymaniu bazie kodu Django.", stack: ["Django", "Postgres", "Stripe", "Redis"], outcome: "Jeden kod, wielu tenantów" },
-      { t: "Wewnętrzna platforma API", tag: "API · DevEx", d: "Wersjonowany gateway API z autoryzacją, rate limitingiem i automatycznie generowaną dokumentacją OpenAPI.", stack: ["FastAPI", "Docker", "AWS", "CI/CD"], outcome: "Self-serve dla zespołów produktowych" },
+      { t: "Travatar", tag: "SaaS · AI", d: "Platforma AI do analizy widoczności marki i jakości ruchu - z AI Growth Coworkerem, modułami GEO i audytu widoczności w AI oraz analizą odróżniającą realny ruch od botów i crawlerów.", dLong: "Travatar odpowiada na pytanie, na które klasyczna analityka już nie odpowiada: jak widoczna jest marka wewnątrz odpowiedzi AI i ile z ruchu na stronie to realni ludzie. Platforma cyklicznie odpytuje modele językowe zestawami promptów i śledzi, gdzie marka się pojawia, w jakim kontekście i obok jakiej konkurencji, a potem zamienia to w audyty GEO i widoczności w AI z konkretnymi rekomendacjami. Po stronie ruchu każda sesja jest klasyfikowana względem sygnatur botów i crawlerów, więc raporty opierają się na realnych użytkownikach, a nie na zawyżonych liczbach. Na wierzchu działa AI Growth Coworker - asystent, który czyta zebrane dane i proponuje kolejne kroki. Odpowiadam za backend: serwisy w Django i FastAPI, model danych na Postgres + pgvector, pipeline'y w Celery i Prefekcie utrzymujące audyty w harmonogramie oraz Kafkę streamującą zdarzenia ruchu.", stack: ["Python", "Django", "FastAPI", "Postgres + pgvector", "Celery", "Kafka", "Prefect"], outcome: "Widoczność marki w świecie AI", logo: "/assets/travatar.svg", url: "https://travatar.ai/en" },
+      { t: "Cannabase", tag: "Data · AI", d: "Platforma danych o medycznej marihuanie w Polsce: katalog odmian z profilami terpenowymi i THC/CBD, dostępność i ceny w aptekach niemal na żywo, kliniki wystawiające recepty oraz Dendi - asystent AI (RAG), który sprawdza dostępność w okolicy i proponuje zamienniki o zbliżonym profilu.", dLong: "Polski rynek medycznej marihuany jest rozsypany po cennikach aptek, PDF-ach producentów i zamkniętych grupach pacjentów - Cannabase zbiera go w jedno miejsce. Katalog obejmuje odmiany z profilami terpenowymi i proporcjami THC/CBD, powiązane z niemal na żywo aktualizowaną dostępnością i cenami w aptekach w całym kraju, plus katalog klinik wystawiających recepty. Zautomatyzowane procesy zbierania i normalizacji danych uzgadniają niespójne nazewnictwo między producentami a aptekami, żeby ten sam produkt nie występował pięć razy w pięciu wariantach zapisu. Dendi, wbudowany asystent AI, działa na pipelinie RAG nad tym katalogiem: odpowiada na pytania o konkretną odmianę, sprawdza dostępność w okolicy pacjenta i proponuje zamienniki o zbliżonym profilu terpenowo-kannabinoidowym, gdy czegoś brakuje. Całość na FastAPI i SQLAlchemy, z Postgresem + pgvector na embeddingi i frontendem w Next.js.", stack: ["Python", "FastAPI", "SQLAlchemy", "Postgres + pgvector", "Next.js", "Docker"], outcome: "Rozproszony rynek w jednym miejscu", logo: "/assets/cannabase.svg", url: "https://cannabase.pl/" },
     ],
-    cta: "Zobacz więcej na GitHubie",
+    cta: "Więcej projektów na LinkedIn",
   },
   writing: {
     eyebrow: "Publikacje",
@@ -307,7 +302,7 @@ const pl: SiteContent = {
     rights: "Wszelkie prawa zastrzeżone.",
   },
   meta: {
-    title: "Krystian Jarmuł — Senior Software Engineer",
+    title: "Krystian Jarmuł - Senior Software Engineer",
     description:
       "Inżynier oprogramowania skupiony na produktach SaaS z mocnym backendem. Python · Django · FastAPI · React · Next.js",
   },

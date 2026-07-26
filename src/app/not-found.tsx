@@ -7,7 +7,7 @@ import { isLocale, type Locale } from "@/lib/i18n";
 import { ArrowIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
-  title: "404 — Page not found",
+  title: "404 - Page not found",
   description: "This page doesn't exist.",
   robots: { index: false, follow: false },
 };
@@ -23,7 +23,7 @@ const STRINGS: Record<Locale, {
     eyebrow: "Error · 404",
     titleA: "This page",
     titleB: "doesn't exist.",
-    sub: "The link leads nowhere — or the page has moved.",
+    sub: "The link leads nowhere - or the page has moved.",
     primary: "Back to homepage",
   },
   pl: {

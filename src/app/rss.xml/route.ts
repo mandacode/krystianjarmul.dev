@@ -48,7 +48,7 @@ ${categories}
   <title>${escapeXml(SITE.name)}</title>
   <link>${SITE.url}</link>
   <atom:link href="${SITE.url}/rss.xml" rel="self" type="application/rss+xml" />
-  <description>Notes from production — Python product engineering, SaaS architecture and AI-assisted development.</description>
+  <description>Notes from production - Python product engineering, SaaS architecture and AI-assisted development.</description>
   <language>en</language>
   <lastBuildDate>${lastBuildDate}</lastBuildDate>
 ${xmlItems}

@@ -45,7 +45,7 @@ const en: PagesContent = {
     minRead: "min read",
     publishedOn: "Published",
     updatedOn: "Updated",
-    noResults: "Nothing here yet — check back soon.",
+    noResults: "Nothing here yet - check back soon.",
     readPost: "Read post",
   },
   blog: {
@@ -58,14 +58,14 @@ const en: PagesContent = {
     eyebrow: "Notes",
     title: "Short notes from the build",
     description:
-      "Cheatsheets, snippets and small lessons — the stuff I'd want a teammate to find when they hit the same wall.",
+      "Cheatsheets, snippets and small lessons - the stuff I'd want a teammate to find when they hit the same wall.",
   },
   projects: {
     eyebrow: "Projects",
     title: "Things I've shipped",
     description:
-      "A closer look at projects that solved a real problem in production — the architecture, the trade-offs and the outcome.",
-    extra: "More on GitHub",
+      "A closer look at projects that solved a real problem in production - the architecture, the trade-offs and the outcome.",
+    extra: "More projects on LinkedIn",
   },
   about: {
     eyebrow: "About",
@@ -75,7 +75,7 @@ const en: PagesContent = {
     sections: [
       {
         heading: "What I do",
-        body: "I design and build production-ready web products — the kind that handle real users, real money and real data. My home is the backend: clean APIs, solid data models, background jobs and auth that doesn't leak. I ship outcomes, not just endpoints.",
+        body: "I design and build production-ready web products - the kind that handle real users, real money and real data. My home is the backend: clean APIs, solid data models, background jobs and auth that doesn't leak. I ship outcomes, not just endpoints.",
       },
       {
         heading: "How I work",
@@ -95,7 +95,7 @@ const en: PagesContent = {
     eyebrow: "Uses",
     title: "What I build with",
     description:
-      "The hardware, software and small tools I lean on every day. Mostly boring choices — that's the point.",
+      "The hardware, software and small tools I lean on every day. Mostly boring choices - that's the point.",
     intro:
       "Setup is the second-most overrated topic in engineering (after frameworks). But people ask, so here it is.",
     groups: [
@@ -103,7 +103,7 @@ const en: PagesContent = {
         name: "Machine",
         items: [
           { name: "MacBook Pro 16\"", detail: "Apple silicon, the only laptop I've genuinely enjoyed." },
-          { name: "External display", detail: "27\" 4K — one screen, big text, fewer windows." },
+          { name: "External display", detail: "27\" 4K - one screen, big text, fewer windows." },
           { name: "Keychron K-series", detail: "Mechanical, low profile, brown switches." },
         ],
       },
@@ -141,16 +141,16 @@ const en: PagesContent = {
     eyebrow: "Now",
     title: "What I'm focused on right now",
     description:
-      "A living page — what's on my plate, what I'm reading, what I'm avoiding. Inspired by Derek Sivers's /now movement.",
+      "A living page - what's on my plate, what I'm reading, what I'm avoiding. Inspired by Derek Sivers's /now movement.",
     updated: "Last updated",
     entries: [
       {
         label: "Working on",
-        body: "Backend-heavy SaaS builds for clients shipping production AI features — document workflows, LLM-assisted internal tooling, the boring infrastructure underneath the demo.",
+        body: "Backend-heavy SaaS builds for clients shipping production AI features - document workflows, LLM-assisted internal tooling, the boring infrastructure underneath the demo.",
       },
       {
         label: "Learning",
-        body: "Going deeper on evaluation harnesses for LLM features — the difference between a demo and a production-grade AI feature is almost always observability and evals.",
+        body: "Going deeper on evaluation harnesses for LLM features - the difference between a demo and a production-grade AI feature is almost always observability and evals.",
       },
       {
         label: "Writing",
@@ -170,7 +170,7 @@ const pl: PagesContent = {
     minRead: "min czytania",
     publishedOn: "Opublikowane",
     updatedOn: "Aktualizacja",
-    noResults: "Jeszcze pusto — wróć za chwilę.",
+    noResults: "Jeszcze pusto - wróć za chwilę.",
     readPost: "Czytaj wpis",
   },
   blog: {
@@ -183,14 +183,14 @@ const pl: PagesContent = {
     eyebrow: "Notatki",
     title: "Krótkie notatki z budowania",
     description:
-      "Ściągi, snippety i drobne lekcje — to, co chciałbym, żeby koleżanka z zespołu znalazła, gdy uderzy w tę samą ścianę.",
+      "Ściągi, snippety i drobne lekcje - to, co chciałbym, żeby koleżanka z zespołu znalazła, gdy uderzy w tę samą ścianę.",
   },
   projects: {
     eyebrow: "Projekty",
     title: "Rzeczy, które wdrożyłem",
     description:
-      "Bliższe spojrzenie na projekty, które rozwiązywały realny problem na produkcji — architektura, kompromisy, efekt.",
-    extra: "Więcej na GitHubie",
+      "Bliższe spojrzenie na projekty, które rozwiązywały realny problem na produkcji - architektura, kompromisy, efekt.",
+    extra: "Więcej projektów na LinkedIn",
   },
   about: {
     eyebrow: "O mnie",
@@ -200,7 +200,7 @@ const pl: PagesContent = {
     sections: [
       {
         heading: "Co robię",
-        body: "Projektuję i buduję gotowe do produkcji produkty webowe — takie, które obsługują realnych użytkowników, realne pieniądze i realne dane. Mój dom to backend: czyste API, solidne modele danych, zadania w tle i autoryzacja, która nie przecieka. Dowożę efekty, nie tylko endpointy.",
+        body: "Projektuję i buduję gotowe do produkcji produkty webowe - takie, które obsługują realnych użytkowników, realne pieniądze i realne dane. Mój dom to backend: czyste API, solidne modele danych, zadania w tle i autoryzacja, która nie przecieka. Dowożę efekty, nie tylko endpointy.",
       },
       {
         heading: "Jak pracuję",
@@ -220,7 +220,7 @@ const pl: PagesContent = {
     eyebrow: "Sprzęt i narzędzia",
     title: "Czego używam do pracy",
     description:
-      "Sprzęt, oprogramowanie i drobne narzędzia, na których opieram codzienność. Głównie nudne wybory — i o to chodzi.",
+      "Sprzęt, oprogramowanie i drobne narzędzia, na których opieram codzienność. Głównie nudne wybory - i o to chodzi.",
     intro:
       "Setup to drugi najbardziej przeceniany temat w inżynierii (zaraz po frameworkach). Ale ludzie pytają, więc tu jest.",
     groups: [
@@ -228,7 +228,7 @@ const pl: PagesContent = {
         name: "Sprzęt",
         items: [
           { name: "MacBook Pro 16\"", detail: "Apple silicon, jedyny laptop, na którym naprawdę dobrze mi się pracuje." },
-          { name: "Monitor zewnętrzny", detail: "27\" 4K — jeden ekran, duża czcionka, mniej okien." },
+          { name: "Monitor zewnętrzny", detail: "27\" 4K - jeden ekran, duża czcionka, mniej okien." },
           { name: "Keychron K-series", detail: "Mechaniczna, niski profil, brązowe switche." },
         ],
       },
@@ -266,16 +266,16 @@ const pl: PagesContent = {
     eyebrow: "Teraz",
     title: "Na czym się teraz skupiam",
     description:
-      "Strona-żyjąca — co mam na talerzu, co czytam, czego unikam. Inspirowane ruchem /now Dereka Siversa.",
+      "Strona-żyjąca - co mam na talerzu, co czytam, czego unikam. Inspirowane ruchem /now Dereka Siversa.",
     updated: "Ostatnia aktualizacja",
     entries: [
       {
         label: "Robię",
-        body: "Backend-heavy SaaS dla klientów wdrażających produkcyjne funkcje AI — workflow dokumentów, narzędzia wewnętrzne wspierane LLM-ami, mniej widowiskowa infrastruktura pod spodem.",
+        body: "Backend-heavy SaaS dla klientów wdrażających produkcyjne funkcje AI - workflow dokumentów, narzędzia wewnętrzne wspierane LLM-ami, mniej widowiskowa infrastruktura pod spodem.",
       },
       {
         label: "Uczę się",
-        body: "Wchodzę głębiej w ewaluację funkcji LLM — różnica między demem a produkcyjną funkcją AI to prawie zawsze observability i evaluacje.",
+        body: "Wchodzę głębiej w ewaluację funkcji LLM - różnica między demem a produkcyjną funkcją AI to prawie zawsze observability i evaluacje.",
       },
       {
         label: "Piszę",

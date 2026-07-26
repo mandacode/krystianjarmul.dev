@@ -1,18 +1,8 @@
-<svg width="132" height="104" viewBox="0 0 132 104" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cannabase">
-  <g fill="#ECEAF6" transform="translate(16 0) skewX(-13)">
-    <!-- top bar -->
-    <rect x="6" y="6" width="104" height="14" />
-    <!-- bottom bar -->
-    <rect x="2" y="84" width="104" height="14" />
-    <!-- left glyph (C) -->
-    <rect x="14" y="28" width="40" height="13" />
-    <rect x="14" y="28" width="14" height="48" />
-    <rect x="14" y="63" width="40" height="13" />
-    <!-- right glyph (S) -->
-    <rect x="68" y="28" width="40" height="13" />
-    <rect x="68" y="28" width="14" height="23" />
-    <rect x="68" y="45" width="40" height="13" />
-    <rect x="94" y="53" width="14" height="23" />
-    <rect x="68" y="63" width="40" height="13" />
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="128.4" viewBox="0 0 160 128.4" role="img" aria-label="Cannabase">
+  <g fill="#ECEAF6">
+    <polygon points="154.08 31.01 136.29 77.62 126.04 77.58 124.26 97.6 85.09 97.45 90 76.96 115.06 77.05 117.55 54 92.8 53.9 98.33 30.79 154.08 31.01"/>
+    <polygon points="2.93 97.38 20.72 53.51 30.97 53.55 32.74 30.79 73.47 30.94 67.12 54.05 41.94 53.96 40.88 77.13 64.2 77.23 58.67 97.6 2.93 97.38"/>
+    <polygon points="160 22.06 32.94 22.06 43.97 0 155.03 0 160 22.06"/>
+    <polygon points="114.41 128.4 3.41 128.4 0 106.34 123.6 106.34 114.41 128.4"/>
   </g>
 </svg>
