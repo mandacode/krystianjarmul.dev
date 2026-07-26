@@ -1,0 +1,18 @@
+<svg width="132" height="104" viewBox="0 0 132 104" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Cannabase">
+  <g fill="#ECEAF6" transform="translate(16 0) skewX(-13)">
+    <!-- top bar -->
+    <rect x="6" y="6" width="104" height="14" />
+    <!-- bottom bar -->
+    <rect x="2" y="84" width="104" height="14" />
+    <!-- left glyph (C) -->
+    <rect x="14" y="28" width="40" height="13" />
+    <rect x="14" y="28" width="14" height="48" />
+    <rect x="14" y="63" width="40" height="13" />
+    <!-- right glyph (S) -->
+    <rect x="68" y="28" width="40" height="13" />
+    <rect x="68" y="28" width="14" height="23" />
+    <rect x="68" y="45" width="40" height="13" />
+    <rect x="94" y="53" width="14" height="23" />
+    <rect x="68" y="63" width="40" height="13" />
+  </g>
+</svg>
