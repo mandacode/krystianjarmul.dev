@@ -1,5 +1,6 @@
 import { LINKS, type SiteContent } from "@/lib/content";
-import { Eyebrow, GithubIcon, LinkedinIcon, MailIcon } from "./icons";
+import { Eyebrow, GithubIcon, LinkedinIcon } from "./icons";
+import { ContactModal } from "./ContactModal";
 
 export function Contact({ c }: { c: SiteContent }) {
   return (
@@ -8,10 +9,7 @@ export function Contact({ c }: { c: SiteContent }) {
         <Eyebrow>{c.contact.eyebrow}</Eyebrow>
         <h2 className="contact-title">{c.contact.title}</h2>
         <p className="contact-sub">{c.contact.sub}</p>
-        <a className="btn btn-primary btn-lg" href={`mailto:${LINKS.email}`}>
-          <MailIcon />
-          <span>{c.contact.ctaPrimary}</span>
-        </a>
+        <ContactModal cta={c.contact.ctaPrimary} f={c.contact.form} />
         <p className="contact-email">{LINKS.email}</p>
         <div className="contact-or">
           <span className="rule" aria-hidden="true" />

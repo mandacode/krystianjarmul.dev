@@ -37,6 +37,22 @@ export type WritingItem = {
 
 export type FactItem = { k: string; v: string };
 
+export type ContactForm = {
+  title: string;
+  sub: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  messageLabel: string;
+  messagePlaceholder: string;
+  submit: string;
+  sending: string;
+  success: string;
+  errorGeneric: string;
+  errorEmail: string;
+  errorMessage: string;
+  close: string;
+};
+
 export type SiteContent = {
   nav: {
     about: string;
@@ -96,6 +112,7 @@ export type SiteContent = {
     sub: string;
     ctaPrimary: string;
     or: string;
+    form: ContactForm;
   };
   footer: {
     tagline: string;
@@ -123,7 +140,7 @@ const en: SiteContent = {
     eyebrow: "Senior Software Engineer",
     headlineA: "Shipping backend-heavy",
     headlineB: "SaaS products.",
-    sub: "Software engineer focused on production-ready web products, APIs and AI-enabled systems - from database to deployment.",
+    sub: "I take products from an empty repo to production and keep them running there - APIs, data models, AI features, deployment. Python at the core, the rest of the stack when it's needed.",
     ctaPrimary: "Get in touch",
     ctaSecondary: "View work",
     stackLabel: "Working with",
@@ -140,6 +157,7 @@ const en: SiteContent = {
       { name: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
       { name: "Infra & DevEx", items: ["Docker", "Vercel", "AWS", "GitHub Actions", "CI/CD"] },
       { name: "Engineering", items: ["System design", "REST & APIs", "Auth / JWT", "Stripe", "Testing", "Observability"] },
+      { name: "AI", items: ["Claude Code", "AI-assisted development", "LLM APIs", "RAG", "pgvector"] },
     ],
   },
   about: {
@@ -195,6 +213,21 @@ const en: SiteContent = {
     sub: "Got a backend-heavy product, an API that needs taming, or a SaaS idea stuck at the repo stage? Drop me a line.",
     ctaPrimary: "Write to me",
     or: "or find me on",
+    form: {
+      title: "Write to me",
+      sub: "Tell me what you're building. I read every message and reply within a day or two.",
+      emailLabel: "Your email",
+      emailPlaceholder: "you@company.com",
+      messageLabel: "Message",
+      messagePlaceholder: "What are you building, and where do you need a hand?",
+      submit: "Send message",
+      sending: "Sending...",
+      success: "Message sent. I'll get back to you shortly.",
+      errorGeneric: "Something went wrong. Write to hi@krystianjarmul.dev directly.",
+      errorEmail: "Enter a valid email address.",
+      errorMessage: "Add a few words about your project.",
+      close: "Close",
+    },
   },
   footer: {
     tagline: "Backend-heavy SaaS, shipped.",
@@ -223,7 +256,7 @@ const pl: SiteContent = {
     eyebrow: "Senior Software Engineer",
     headlineA: "Tworzę produkty SaaS",
     headlineB: "z mocnym backendem.",
-    sub: "Inżynier oprogramowania skupiony na gotowych do produkcji produktach webowych, API i systemach z AI - od bazy danych po wdrożenie.",
+    sub: "Prowadzę produkty od pustego repo na produkcję i utrzymuję je tam przy życiu - API, modele danych, funkcje AI, wdrożenie. W centrum Python, reszta stacku wtedy, kiedy jest potrzebna.",
     ctaPrimary: "Napisz do mnie",
     ctaSecondary: "Zobacz projekty",
     stackLabel: "Pracuję z",
@@ -240,6 +273,7 @@ const pl: SiteContent = {
       { name: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind CSS"] },
       { name: "Infra i DevEx", items: ["Docker", "Vercel", "AWS", "GitHub Actions", "CI/CD"] },
       { name: "Inżynieria", items: ["Projektowanie systemów", "REST i API", "Auth / JWT", "Stripe", "Testy", "Observability"] },
+      { name: "AI", items: ["Claude Code", "Programowanie z AI", "API modeli LLM", "RAG", "pgvector"] },
     ],
   },
   about: {
@@ -295,6 +329,21 @@ const pl: SiteContent = {
     sub: "Masz produkt z mocnym backendem, API do okiełznania albo pomysł na SaaS, który utknął na etapie repo? Napisz.",
     ctaPrimary: "Napisz do mnie",
     or: "lub znajdź mnie na",
+    form: {
+      title: "Napisz do mnie",
+      sub: "Napisz, co budujesz. Czytam każdą wiadomość i odpisuję w dzień lub dwa.",
+      emailLabel: "Twój e-mail",
+      emailPlaceholder: "ty@firma.pl",
+      messageLabel: "Wiadomość",
+      messagePlaceholder: "Co budujesz i przy czym potrzebujesz wsparcia?",
+      submit: "Wyślij wiadomość",
+      sending: "Wysyłam...",
+      success: "Wiadomość wysłana. Odezwę się wkrótce.",
+      errorGeneric: "Coś poszło nie tak. Napisz bezpośrednio na hi@krystianjarmul.dev.",
+      errorEmail: "Podaj poprawny adres e-mail.",
+      errorMessage: "Dodaj kilka słów o projekcie.",
+      close: "Zamknij",
+    },
   },
   footer: {
     tagline: "SaaS z mocnym backendem, dowieziony.",
