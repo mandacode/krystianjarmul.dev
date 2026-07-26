@@ -1,0 +1,11 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Travatar">
+  <defs>
+    <linearGradient id="travatar-grad" x1="20" y1="58" x2="48" y2="18" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4C7BF4" />
+      <stop offset="1" stop-color="#7B5BF6" />
+    </linearGradient>
+  </defs>
+  <circle cx="15" cy="15" r="8.5" fill="#6E5CF4" />
+  <rect x="23" y="26" width="13" height="30" rx="6.5" fill="url(#travatar-grad)" />
+  <path d="M29.5 30 a12 12 0 0 1 12.5 -1" fill="none" stroke="url(#travatar-grad)" stroke-width="13" stroke-linecap="round" />
+</svg>

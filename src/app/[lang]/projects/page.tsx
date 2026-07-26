@@ -5,6 +5,7 @@ import { getContent, LINKS } from "@/lib/content";
 import { getPages } from "@/lib/pages";
 import { createMetadata } from "@/lib/metadata";
 import { JsonLdScript, websiteSchema } from "@/lib/schema";
+import Image from "next/image";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 import { LangSync } from "@/components/LangSync";
@@ -55,13 +56,16 @@ export default async function ProjectsPage({ params }: { params: Promise<Params>
             {c.work.items.map((w) => (
               <a
                 className="work-card"
-                href={LINKS.github}
+                href={w.url ?? LINKS.github}
                 target="_blank"
                 rel="noreferrer noopener"
                 key={w.t}
               >
-                <div className="work-thumb" aria-hidden="true">
-                  <span className="work-thumb-stripes" />
+                <div className={`work-thumb${w.logo ? " has-logo" : ""}`}>
+                  <span className="work-thumb-stripes" aria-hidden="true" />
+                  {w.logo ? (
+                    <Image className="work-thumb-logo" src={w.logo} alt={`${w.t} logo`} width={92} height={92} />
+                  ) : null}
                   <span className="work-thumb-tag">{w.tag}</span>
                 </div>
                 <div className="work-body">

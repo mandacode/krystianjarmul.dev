@@ -803,6 +803,21 @@ img {
   border: 1px solid var(--accent-line);
   white-space: nowrap;
 }
+.work-thumb-logo {
+  position: relative;
+  width: 46%;
+  max-width: 92px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+}
+.work-thumb.has-logo .work-thumb-tag {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 11px;
+  padding: 4px 9px;
+}
 .work-title {
   font-family: var(--font-display);
   font-weight: 600;

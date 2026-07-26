@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { LINKS, type SiteContent } from "@/lib/content";
 import type { Locale } from "@/lib/i18n";
 import { ArrowIcon } from "./icons";
@@ -16,13 +17,16 @@ export function Work({ c, lang }: { c: SiteContent; lang: Locale }) {
         {c.work.items.map((w) => (
           <a
             className="work-card reveal"
-            href={LINKS.github}
+            href={w.url ?? LINKS.github}
             target="_blank"
             rel="noreferrer noopener"
             key={w.t}
           >
-            <div className="work-thumb" aria-hidden="true">
-              <span className="work-thumb-stripes" />
+            <div className={`work-thumb${w.logo ? " has-logo" : ""}`}>
+              <span className="work-thumb-stripes" aria-hidden="true" />
+              {w.logo ? (
+                <Image className="work-thumb-logo" src={w.logo} alt={`${w.t} logo`} width={92} height={92} />
+              ) : null}
               <span className="work-thumb-tag">{w.tag}</span>
             </div>
             <div className="work-body">

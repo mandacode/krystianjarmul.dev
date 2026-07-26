@@ -23,6 +23,8 @@ export type WorkItem = {
   d: string;
   stack: string[];
   outcome: string;
+  logo?: string;
+  url?: string;
 };
 
 export type WritingItem = {
@@ -170,6 +172,7 @@ const en: SiteContent = {
     title: "A few things I've built",
     sub: "Project teardowns: the problem, the stack and the outcome.",
     items: [
+      { t: "Travatar", tag: "SaaS · AI", d: "AI platform for brand-visibility and traffic-quality analytics — with an AI Growth Coworker, GEO and AI-visibility audit modules, and traffic analysis that separates real visitors from bots and crawlers.", stack: ["Python", "Django", "FastAPI", "Postgres", "Celery", "Kafka", "Prefect"], outcome: "Brand visibility in the AI era", logo: "/assets/travatar.svg", url: "https://travatar.ai/en" },
       { t: "AI document workflow app", tag: "SaaS · AI", d: "Multi-step document processing with an LLM pipeline, queued workers and a React dashboard.", stack: ["FastAPI", "Celery", "React", "Postgres"], outcome: "From prototype to paying users" },
       { t: "Multi-tenant SaaS platform", tag: "Backend · SaaS", d: "Tenant isolation, role-based access and Stripe billing on a single maintainable Django codebase.", stack: ["Django", "Postgres", "Stripe", "Redis"], outcome: "Single codebase, many tenants" },
       { t: "Internal API platform", tag: "APIs · DevEx", d: "Versioned API gateway with auth, rate limiting and auto-generated OpenAPI docs.", stack: ["FastAPI", "Docker", "AWS", "CI/CD"], outcome: "Self-serve for product teams" },
@@ -271,6 +274,7 @@ const pl: SiteContent = {
     title: "Kilka rzeczy, które zbudowałem",
     sub: "Teardown projektów: problem, stack i efekt.",
     items: [
+      { t: "Travatar", tag: "SaaS · AI", d: "Platforma AI do analizy widoczności marki i jakości ruchu — z AI Growth Coworkerem, modułami GEO i audytu widoczności w AI oraz analizą odróżniającą realny ruch od botów i crawlerów.", stack: ["Python", "Django", "FastAPI", "Postgres", "Celery", "Kafka", "Prefect"], outcome: "Widoczność marki w świecie AI", logo: "/assets/travatar.svg", url: "https://travatar.ai/en" },
       { t: "Aplikacja do workflow dokumentów z AI", tag: "SaaS · AI", d: "Wieloetapowe przetwarzanie dokumentów z pipeline'em LLM, kolejką workerów i dashboardem w React.", stack: ["FastAPI", "Celery", "React", "Postgres"], outcome: "Od prototypu do płacących użytkowników" },
       { t: "Platforma SaaS multi-tenant", tag: "Backend · SaaS", d: "Izolacja tenantów, dostęp oparty o role i płatności Stripe na jednej, łatwej w utrzymaniu bazie kodu Django.", stack: ["Django", "Postgres", "Stripe", "Redis"], outcome: "Jeden kod, wielu tenantów" },
       { t: "Wewnętrzna platforma API", tag: "API · DevEx", d: "Wersjonowany gateway API z autoryzacją, rate limitingiem i automatycznie generowaną dokumentacją OpenAPI.", stack: ["FastAPI", "Docker", "AWS", "CI/CD"], outcome: "Self-serve dla zespołów produktowych" },
