@@ -33,7 +33,6 @@ export function Footer({ c }: { c: SiteContent }) {
         <span>
           © {year} Krystian Jarmuł. {c.footer.rights}
         </span>
-        <span className="footer-built">{c.footer.built}</span>
       </div>
     </footer>
   );

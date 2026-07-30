@@ -116,7 +116,6 @@ export type SiteContent = {
   };
   footer: {
     tagline: string;
-    built: string;
     rights: string;
   };
   meta: {
@@ -234,7 +233,6 @@ const en: SiteContent = {
   },
   footer: {
     tagline: "Backend, data and AI, shipped.",
-    built: "Designed & built by Krystian Jarmuł",
     rights: "All rights reserved.",
   },
   meta: {
@@ -353,7 +351,6 @@ const pl: SiteContent = {
   },
   footer: {
     tagline: "Backend, dane i AI, dowiezione.",
-    built: "Zaprojektowane i zbudowane przez Krystiana Jarmuła",
     rights: "Wszelkie prawa zastrzeżone.",
   },
   meta: {

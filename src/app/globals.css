@@ -1068,7 +1068,8 @@ img {
   margin: 0 auto;
   padding: 18px var(--pad) 38px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   gap: 16px;
   flex-wrap: wrap;
   border-top: 1px solid var(--border);
@@ -1720,10 +1721,13 @@ img {
     display: block;
     opacity: 0.85;
   }
-  .footer-inner,
-  .footer-bottom {
+  .footer-inner {
     flex-direction: column;
     align-items: flex-start;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
