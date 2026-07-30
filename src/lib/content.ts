@@ -140,7 +140,7 @@ const en: SiteContent = {
     eyebrow: "Senior Backend Engineer · Python & AI",
     headlineA: "Writing code is no longer",
     headlineB: "the hard part.",
-    sub: "Systems thinking and understanding the domain matter more than ever. Six years on SaaS products taught me where the expensive decisions hide. Let's build something together that is still cheap to change a year from now.",
+    sub: "Systems thinking and understanding the domain matter more than ever. Six years on SaaS products taught me where the expensive decisions hide. Let's build something stable and scalable together.",
     ctaPrimary: "Get in touch",
     ctaSecondary: "View work",
     stackLabel: "Working with",
@@ -259,7 +259,7 @@ const pl: SiteContent = {
     eyebrow: "Senior Backend Engineer · Python i AI",
     headlineA: "Pisanie kodu przestało być",
     headlineB: "tą trudną częścią.",
-    sub: "Myślenie systemowe i rozumienie domeny stało się ważne jak nigdy. Mam za sobą sześć lat przy produktach SaaS i wiem, gdzie zapadają te kosztowne decyzje. Stwórzmy razem produkt, który rok później nadal będzie tani w zmianie.",
+    sub: "Myślenie systemowe i rozumienie domeny stało się ważne jak nigdy. Mam za sobą sześć lat przy produktach SaaS i wiem, gdzie zapadają te kosztowne decyzje. Zbudujmy razem stabilny, skalowalny produkt.",
     ctaPrimary: "Napisz do mnie",
     ctaSecondary: "Zobacz projekty",
     stackLabel: "Pracuję z",
@@ -286,7 +286,7 @@ const pl: SiteContent = {
     body: [
       "Sześć lat pracy nad backendem produktów SaaS, w szybkich startupach i w większych firmach, w domenach HR, AdTech, wyszukiwania AI i GEO, wykrywania fraudów oraz telekomunikacji. Przez wszystkie te role przewija się jeden wątek: pozyskiwanie danych. Crawlery, pipeline'y ETL i autorskie mechanizmy zbierania danych dla dziedzin bez wiarygodnego, ustrukturyzowanego źródła - od ruchu reklamowego z fraudem po odpowiedzi, których generatywne AI udziela na temat marki.",
       "Narzędzia AI do kodowania są stałym elementem mojej pracy, a w stronę AI Engineering rozwijam się świadomie. Im tańsze i szybsze staje się generowanie kodu, tym bardziej wąskim gardłem jest co innego: projektowanie systemów, które się trzymają, rozumienie domeny na tyle dobrze, by wiedzieć, który problem warto rozwiązać, i trafne decyzje architektoniczne.",
-      "Trzymam wysoką poprzeczkę jakości. Czysta architektura, sensowne testy, czytelny kod i wydajność, która wytrzymuje realne obciążenie - bo to właśnie sprawia, że system rok później nadal jest tani w zmianie.",
+      "Trzymam wysoką poprzeczkę jakości. Czysta architektura, sensowne testy, czytelny kod i wydajność, która wytrzymuje realne obciążenie - bo to właśnie decyduje o tym, ile kosztuje rozwijanie systemu rok później.",
     ],
     facts: [
       { k: "Specjalizacja", v: "Backend · Dane · AI" },
