@@ -1802,8 +1802,9 @@ img {
 }
 .modal-form .btn,
 .modal-done .btn {
-  align-self: flex-start;
+  align-self: center;
   justify-content: center;
+  min-width: 220px;
 }
 .field {
   display: flex;

@@ -69,21 +69,21 @@ const en: PagesContent = {
   },
   about: {
     eyebrow: "About",
-    title: "Python product engineer who can ship across the stack.",
+    title: "Backend engineer who invests where code generation can't help.",
     description:
-      "Backend-heavy by trade. Full-stack by necessity. Here's how I work and what I optimize for.",
+      "Six years of backend work on SaaS products, most of it in domains where the data has no clean source. Here's how I work and what I optimize for.",
     sections: [
       {
         heading: "What I do",
-        body: "I design and build production-ready web products - the kind that handle real users, real money and real data. My home is the backend: clean APIs, solid data models, background jobs and auth that doesn't leak. I ship outcomes, not just endpoints.",
+        body: "Backend for SaaS products: clean APIs, solid data models, async workers and the plumbing that keeps a system reliable as traffic grows. I have worked in HR, AdTech, AI search and GEO, fraud detection and telecom, and one thread runs through all of it - data acquisition. Crawlers, ETL pipelines and custom collection mechanisms for domains that offer no reliable structured source.",
       },
       {
         heading: "How I work",
-        body: "I default to boring, proven tools and make them ship outcomes. I write tests where they pay back, observability where it matters, and documentation only when the future-reader is someone other than me. I push back on premature abstraction.",
+        body: "I default to boring, proven tools and make them ship outcomes. AI coding tools are part of my daily loop, which frees my attention for the parts they can't do: system design, domain understanding, architectural trade-offs. I write tests where they pay back, observability where it matters, and documentation only when the future-reader is someone other than me. I push back on premature abstraction.",
       },
       {
         heading: "Where I help most",
-        body: "Greenfield SaaS work where the engineering decisions still matter. API-heavy systems where the contract is the product. Teams scaling a Python codebase past the point where the framework defaults are enough. AI-enabled features that need to be production-grade, not demos.",
+        body: "Systems with a genuine data problem, where the source is messy, undocumented or simply absent. API-heavy products where the contract is the product. Teams scaling a Python codebase past the point where framework defaults are enough. AI features that have to be production-grade and trustworthy, not demos.",
       },
       {
         heading: "Outside the editor",
@@ -194,21 +194,21 @@ const pl: PagesContent = {
   },
   about: {
     eyebrow: "O mnie",
-    title: "Python product engineer, który dowozi w całym stacku.",
+    title: "Backend engineer, który inwestuje tam, gdzie generowanie kodu nie pomoże.",
     description:
-      "Backend z zawodu. Full-stack z konieczności. Tu jest, jak pracuję i pod co optymalizuję.",
+      "Sześć lat backendu przy produktach SaaS, w większości w domenach, w których dane nie mają czystego źródła. Tu jest, jak pracuję i pod co optymalizuję.",
     sections: [
       {
         heading: "Co robię",
-        body: "Projektuję i buduję gotowe do produkcji produkty webowe - takie, które obsługują realnych użytkowników, realne pieniądze i realne dane. Mój dom to backend: czyste API, solidne modele danych, zadania w tle i autoryzacja, która nie przecieka. Dowożę efekty, nie tylko endpointy.",
+        body: "Backend produktów SaaS: czyste API, solidne modele danych, workery asynchroniczne i hydraulika, która utrzymuje system w ryzach, gdy ruch rośnie. Pracowałem w HR, AdTechu, wyszukiwaniu AI i GEO, wykrywaniu fraudów i telekomunikacji, a przez wszystko przewija się jeden wątek - pozyskiwanie danych. Crawlery, pipeline'y ETL i autorskie mechanizmy zbierania danych dla dziedzin bez wiarygodnego, ustrukturyzowanego źródła.",
       },
       {
         heading: "Jak pracuję",
-        body: "Domyślnie sięgam po nudne, sprawdzone narzędzia i dowożę nimi efekty. Piszę testy tam, gdzie się zwracają, observability tam, gdzie jest potrzebne, i dokumentację tylko wtedy, gdy przyszły czytelnik to ktoś inny niż ja. Walczę z przedwczesną abstrakcją.",
+        body: "Domyślnie sięgam po nudne, sprawdzone narzędzia i dowożę nimi efekty. Narzędzia AI do kodowania są stałym elementem mojego dnia, co uwalnia uwagę na to, czego one nie zrobią: projektowanie systemu, rozumienie domeny, decyzje architektoniczne. Piszę testy tam, gdzie się zwracają, observability tam, gdzie jest potrzebne, i dokumentację tylko wtedy, gdy przyszły czytelnik to ktoś inny niż ja. Walczę z przedwczesną abstrakcją.",
       },
       {
         heading: "Gdzie pomagam najbardziej",
-        body: "SaaS-y od zera, gdzie decyzje inżynierskie jeszcze mają znaczenie. Systemy API-first, w których kontrakt jest produktem. Zespoły skalujące kod w Pythonie poza domyślne ramy frameworka. Funkcje z AI, które muszą trafić na produkcję, nie tylko na demo.",
+        body: "Systemy z realnym problemem danych, gdzie źródło jest brudne, nieudokumentowane albo po prostu nie istnieje. Produkty API-first, w których kontrakt jest produktem. Zespoły skalujące kod w Pythonie poza domyślne ramy frameworka. Funkcje z AI, którym trzeba móc zaufać na produkcji, nie tylko na demo.",
       },
       {
         heading: "Poza edytorem",
