@@ -19,7 +19,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://krystianjarmul.dev"),
   title: {
-    default: "Krystian Jarmuł - Senior Software Engineer",
+    default: "Krystian Jarmuł - Senior Python Engineer",
     template: "%s · Krystian Jarmuł",
   },
   description:
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Krystian Jarmuł",
-    title: "Krystian Jarmuł - Senior Software Engineer",
+    title: "Krystian Jarmuł - Senior Python Engineer",
     description:
       "Software engineer focused on shipping backend-heavy SaaS products. Python · Django · FastAPI · React · Next.js",
     url: "/",
@@ -44,13 +44,13 @@ export const metadata: Metadata = {
         url: "/assets/og.png",
         width: 1200,
         height: 630,
-        alt: "Krystian Jarmuł - Senior Software Engineer",
+        alt: "Krystian Jarmuł - Senior Python Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Krystian Jarmuł - Senior Software Engineer",
+    title: "Krystian Jarmuł - Senior Python Engineer",
     description:
       "Software engineer focused on shipping backend-heavy SaaS products. Python · Django · FastAPI · React · Next.js",
     images: ["/assets/og.png"],
