@@ -1,5 +1,5 @@
 export const SITE = {
-  url: "https://krystianjarmul.dev",
+  url: "https://www.krystianjarmul.dev",
   name: "Krystian Jarmuł",
   author: "Krystian Jarmuł",
   jobTitle: "Senior Python Engineer",

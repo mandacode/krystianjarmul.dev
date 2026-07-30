@@ -17,13 +17,13 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://krystianjarmul.dev"),
+  metadataBase: new URL("https://www.krystianjarmul.dev"),
   title: {
     default: "Krystian Jarmuł - Senior Python Engineer",
     template: "%s · Krystian Jarmuł",
   },
   description:
-    "Software engineer focused on shipping backend-heavy SaaS products. Python · Django · FastAPI · React · Next.js",
+    "Backend engineer with 6+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain",
   alternates: {
     canonical: "/",
     languages: {
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "Krystian Jarmuł",
     title: "Krystian Jarmuł - Senior Python Engineer",
     description:
-      "Software engineer focused on shipping backend-heavy SaaS products. Python · Django · FastAPI · React · Next.js",
+      "Backend engineer with 6+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain",
     url: "/",
     images: [
       {
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Krystian Jarmuł - Senior Python Engineer",
     description:
-      "Software engineer focused on shipping backend-heavy SaaS products. Python · Django · FastAPI · React · Next.js",
+      "Backend engineer with 6+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain",
     images: ["/assets/og.png"],
   },
   icons: {
