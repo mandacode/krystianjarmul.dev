@@ -45,11 +45,6 @@ export function Work({ c }: { c: SiteContent }) {
           </a>
         ))}
       </div>
-      <div className="section-foot reveal">
-        <a className="text-link" href={LINKS.linkedin} target="_blank" rel="noreferrer noopener">
-          {c.work.cta} <ArrowIcon />
-        </a>
-      </div>
     </section>
   );
 }

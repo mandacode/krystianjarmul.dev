@@ -41,7 +41,6 @@ export function Nav({ c, lang }: { c: SiteContent; lang: Locale }) {
     ["stack", c.nav.stack],
     ["services", c.nav.services],
     ["work", c.nav.work],
-    ["writing", c.nav.writing],
     ["contact", c.nav.contact],
   ];
 
