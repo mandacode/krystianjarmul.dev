@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { experienceYears } from "@/lib/experience";
 import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s · Krystian Jarmuł",
   },
   description:
-    "Backend engineer with 6+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain",
+    `Backend engineer with ${experienceYears()}+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain`,
   alternates: {
     canonical: "/",
     languages: {
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     siteName: "Krystian Jarmuł",
     title: "Krystian Jarmuł - Senior Python Engineer",
     description:
-      "Backend engineer with 6+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain",
+      `Backend engineer with ${experienceYears()}+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain`,
     url: "/",
     images: [
       {
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Krystian Jarmuł - Senior Python Engineer",
     description:
-      "Backend engineer with 6+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain",
+      `Backend engineer with ${experienceYears()}+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain`,
     images: ["/assets/og.png"],
   },
   icons: {

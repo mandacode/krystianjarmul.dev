@@ -1,4 +1,7 @@
 import type { Locale } from "./i18n";
+import { experienceYears, plYears } from "./experience";
+
+const YEARS = experienceYears();
 
 export const LINKS = {
   email: "hi@krystianjarmul.dev",
@@ -139,7 +142,7 @@ const en: SiteContent = {
     eyebrow: "Senior Backend Engineer · Python & AI",
     headlineA: "Writing code is no longer",
     headlineB: "the hard part.",
-    sub: "Systems thinking and understanding the domain matter more than ever. Six years on SaaS products: backends, data acquisition and AI-backed features. Let's build something stable and scalable together.",
+    sub: `Systems thinking and understanding the domain matter more than ever. ${YEARS} years on SaaS products: backends, data acquisition and AI-backed features. Let's build something stable and scalable together.`,
     ctaPrimary: "Get in touch",
     ctaSecondary: "View work",
     stackLabel: "Working with",
@@ -162,16 +165,16 @@ const en: SiteContent = {
   },
   about: {
     eyebrow: "About",
-    title: "Backend engineer who invests where code generation can't help.",
+    title: "Backend engineer focused on what code generation won't solve.",
     body: [
-      "Six years of backend work on SaaS products, in fast-paced startups and in larger companies, across HR, AdTech, AI search and GEO, fraud detection and telecom. One thread runs through all of it: data acquisition. Crawlers, ETL pipelines and custom collection mechanisms for domains with no reliable structured source, from advertising fraud traffic to the answers generative AI gives about a brand.",
+      `${YEARS} years of backend work on SaaS products, in fast-paced startups and in larger companies, across HR, AdTech, AI search and GEO, fraud detection and telecom. One thread runs through all of it: data acquisition. Crawlers, ETL pipelines and custom collection mechanisms for domains with no reliable structured source, from advertising fraud traffic to the answers generative AI gives about a brand.`,
       "AI coding tools are part of how I work every day, and I am deliberately growing into AI engineering. As code generation gets cheaper and faster, the bottleneck moves elsewhere: designing systems that hold together, understanding the domain well enough to know which problem is worth solving, making the right architectural trade-offs.",
       "I hold a high bar for quality. Clean architecture, meaningful tests, readable code and performance that survives real load, because that is what keeps a system cheap to change a year from now.",
     ],
     facts: [
       { k: "Focus", v: "Backend · Data · AI" },
       { k: "Core", v: "Python · Django · FastAPI" },
-      { k: "Experience", v: "6+ years, SaaS products" },
+      { k: "Experience", v: `${YEARS}+ years, SaaS products` },
       { k: "Based", v: "Poland · Remote" },
     ],
   },
@@ -238,7 +241,7 @@ const en: SiteContent = {
   meta: {
     title: "Krystian Jarmuł - Senior Backend Engineer",
     description:
-      "Backend engineer with 6+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain",
+      `Backend engineer with ${YEARS}+ years on SaaS products. Data acquisition, APIs and AI-backed features. Python · Django · FastAPI · PostgreSQL · LangChain`,
   },
 };
 
@@ -257,7 +260,7 @@ const pl: SiteContent = {
     eyebrow: "Senior Backend Engineer · Python i AI",
     headlineA: "Pisanie kodu przestało być",
     headlineB: "tą trudną częścią.",
-    sub: "Myślenie systemowe i rozumienie domeny stało się ważne jak nigdy. Mam za sobą sześć lat przy produktach SaaS: backend, pozyskiwanie danych i funkcje oparte o AI. Zbudujmy razem stabilny, skalowalny produkt.",
+    sub: `Myślenie systemowe i rozumienie domeny stało się ważne jak nigdy. Mam za sobą ${plYears(YEARS)} przy produktach SaaS: backend, pozyskiwanie danych i funkcje oparte o AI. Zbudujmy razem stabilny, skalowalny produkt.`,
     ctaPrimary: "Napisz do mnie",
     ctaSecondary: "Zobacz projekty",
     stackLabel: "Pracuję z",
@@ -280,16 +283,16 @@ const pl: SiteContent = {
   },
   about: {
     eyebrow: "O mnie",
-    title: "Backend engineer, który inwestuje tam, gdzie generowanie kodu nie pomoże.",
+    title: "Backend engineer skupiony na tym, czego generowanie kodu nie załatwi.",
     body: [
-      "Sześć lat pracy nad backendem produktów SaaS, w szybkich startupach i w większych firmach, w domenach HR, AdTech, wyszukiwania AI i GEO, wykrywania fraudów oraz telekomunikacji. Przez wszystkie te role przewija się jeden wątek: pozyskiwanie danych. Crawlery, pipeline'y ETL i autorskie mechanizmy zbierania danych dla dziedzin bez wiarygodnego, ustrukturyzowanego źródła - od ruchu reklamowego z fraudem po odpowiedzi, których generatywne AI udziela na temat marki.",
+      `${plYears(YEARS)} pracy nad backendem produktów SaaS, w szybkich startupach i w większych firmach, w domenach HR, AdTech, wyszukiwania AI i GEO, wykrywania fraudów oraz telekomunikacji. Przez wszystkie te role przewija się jeden wątek: pozyskiwanie danych. Crawlery, pipeline'y ETL i autorskie mechanizmy zbierania danych dla dziedzin bez wiarygodnego, ustrukturyzowanego źródła - od ruchu reklamowego z fraudem po odpowiedzi, których generatywne AI udziela na temat marki.`,
       "Narzędzia AI do kodowania są stałym elementem mojej pracy, a w stronę AI Engineering rozwijam się świadomie. Im tańsze i szybsze staje się generowanie kodu, tym bardziej wąskim gardłem jest co innego: projektowanie systemów, które się trzymają, rozumienie domeny na tyle dobrze, by wiedzieć, który problem warto rozwiązać, i trafne decyzje architektoniczne.",
       "Trzymam wysoką poprzeczkę jakości. Czysta architektura, sensowne testy, czytelny kod i wydajność, która wytrzymuje realne obciążenie - bo to właśnie decyduje o tym, ile kosztuje rozwijanie systemu rok później.",
     ],
     facts: [
       { k: "Specjalizacja", v: "Backend · Dane · AI" },
       { k: "Rdzeń", v: "Python · Django · FastAPI" },
-      { k: "Doświadczenie", v: "6+ lat, produkty SaaS" },
+      { k: "Doświadczenie", v: `${YEARS}+ lat, produkty SaaS` },
       { k: "Lokalizacja", v: "Polska · Zdalnie" },
     ],
   },
@@ -356,7 +359,7 @@ const pl: SiteContent = {
   meta: {
     title: "Krystian Jarmuł - Senior Backend Engineer",
     description:
-      "Backend engineer z 6+ latami przy produktach SaaS. Pozyskiwanie danych, API i funkcje oparte o AI. Python · Django · FastAPI · PostgreSQL · LangChain",
+      `Backend engineer z ${YEARS}+ latami przy produktach SaaS. Pozyskiwanie danych, API i funkcje oparte o AI. Python · Django · FastAPI · PostgreSQL · LangChain`,
   },
 };
 

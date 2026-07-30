@@ -1,4 +1,7 @@
 import type { Locale } from "./i18n";
+import { experienceYears, plYears } from "./experience";
+
+const YEARS = experienceYears();
 
 export type PageStrings = {
   eyebrow: string;
@@ -69,9 +72,8 @@ const en: PagesContent = {
   },
   about: {
     eyebrow: "About",
-    title: "Backend engineer who invests where code generation can't help.",
-    description:
-      "Six years of backend work on SaaS products, most of it in domains where the data has no clean source. Here's how I work and what I optimize for.",
+    title: "Backend engineer focused on what code generation won't solve.",
+    description: `${YEARS} years of backend work on SaaS products, most of it in domains where the data has no clean source. Here's how I work and what I optimize for.`,
     sections: [
       {
         heading: "What I do",
@@ -194,9 +196,8 @@ const pl: PagesContent = {
   },
   about: {
     eyebrow: "O mnie",
-    title: "Backend engineer, który inwestuje tam, gdzie generowanie kodu nie pomoże.",
-    description:
-      "Sześć lat backendu przy produktach SaaS, w większości w domenach, w których dane nie mają czystego źródła. Tu jest, jak pracuję i pod co optymalizuję.",
+    title: "Backend engineer skupiony na tym, czego generowanie kodu nie załatwi.",
+    description: `${plYears(YEARS)} backendu przy produktach SaaS, w większości w domenach, w których dane nie mają czystego źródła. Tu jest, jak pracuję i pod co optymalizuję.`,
     sections: [
       {
         heading: "Co robię",
