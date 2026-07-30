@@ -8,7 +8,7 @@ export const LINKS = {
   linkedinLabel: "in/krystianjarmul",
 } as const;
 
-export const STACK_PRIMARY = ["Python", "FastAPI", "PostgreSQL + pgvector", "LangGraph", "Next.js"] as const;
+export const STACK_PRIMARY = ["Python", "Django", "FastAPI", "PostgreSQL + pgvector", "LangGraph", "Next.js"] as const;
 
 export type StackGroup = {
   name: string;
