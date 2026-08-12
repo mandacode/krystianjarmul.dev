@@ -829,6 +829,26 @@ img {
   font-size: 11px;
   padding: 4px 9px;
 }
+.work-thumb.has-shot {
+  padding: 0;
+}
+.work-thumb-shot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+.work-thumb.has-shot .work-thumb-tag {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  font-size: 11px;
+  padding: 4px 9px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(6px);
+}
 .work-title {
   font-family: var(--font-display);
   font-weight: 600;
@@ -862,6 +882,22 @@ img {
 }
 .work-card:hover .arrow {
   transform: translate(4px, -4px);
+}
+.work-links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-self: stretch;
+}
+.work-links .btn {
+  justify-content: center;
+}
+@media (max-width: 900px) {
+  .work-links {
+    flex-direction: row;
+    align-self: auto;
+    flex-wrap: wrap;
+  }
 }
 
 /* ============ WRITING ============ */

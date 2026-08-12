@@ -28,7 +28,9 @@ export type WorkItem = {
   stack: string[];
   outcome: string;
   logo?: string;
+  shot?: string;
   url?: string;
+  repo?: string;
 };
 
 export type WritingItem = {
@@ -62,6 +64,7 @@ export type SiteContent = {
     stack: string;
     services: string;
     work: string;
+    labs: string;
     writing: string;
     contact: string;
     cta: string;
@@ -102,6 +105,15 @@ export type SiteContent = {
     items: WorkItem[];
     cta: string;
   };
+  labs: {
+    eyebrow: string;
+    title: string;
+    sub: string;
+    items: WorkItem[];
+    demo: string;
+    code: string;
+    cta: string;
+  };
   writing: {
     eyebrow: string;
     title: string;
@@ -133,6 +145,7 @@ const en: SiteContent = {
     stack: "Stack",
     services: "Services",
     work: "Work",
+    labs: "Side projects",
     writing: "Writing",
     contact: "Contact",
     cta: "Hire me",
@@ -201,6 +214,28 @@ const en: SiteContent = {
     ],
     cta: "More projects on LinkedIn",
   },
+  labs: {
+    eyebrow: "Side projects",
+    title: "One idea, all the way down",
+    sub: "Non-commercial demos where I go deep on one idea end to end. No client, no deadline - just the engineering.",
+    items: [
+      {
+        t: "Mandaflix",
+        tag: "AI · ML",
+        shot: "/assets/mandaflix.png",
+        d: "A streaming-style movie recommender with two independent AI systems: personalised recommendations and hybrid semantic search, behind a Netflix-like UI that hides the algorithms.",
+        dLong:
+          "Mandaflix is a full-stack movie recommender built on the MovieLens dataset, with two ML systems running side by side. Recommendations use matrix factorisation (SVD): a user's taste vector is folded in from their current likes in real time against fixed item factors, so a like re-ranks the grid instantly and a brand-new profile cold-starts from popularity - no retraining on the hot path, with a separate batch job folding likes back into the model. Search is hybrid retrieval, both halves served by Postgres and fused with Reciprocal Rank Fusion: full-text (tsvector, field-weighted so a title hit outranks a word buried in a plot) plus semantic (pgvector cosine over MiniLM embeddings of TMDB overviews), so it answers both \"lord\" and \"a lonely robot finds friendship in space\". Four recommender models were benchmarked on a per-user temporal split (P/R/NDCG@10) before SVD won and shipped; an Insights panel exposes the metrics the consumer UI deliberately hides. FastAPI serves both the API and the built React frontend from one origin, fronted by a Cloudflare Tunnel.",
+        stack: ["Python", "FastAPI", "scikit-learn (SVD)", "Postgres + pgvector", "React + Vite", "Docker"],
+        outcome: "Recommendations + hybrid retrieval",
+        url: "https://mandaflix.krystianjarmul.dev",
+        repo: "https://github.com/mandacode/ai-movie-recommender",
+      },
+    ],
+    demo: "Live demo",
+    code: "Code",
+    cta: "See more on GitHub",
+  },
   writing: {
     eyebrow: "Writing",
     title: "Notes from production",
@@ -251,6 +286,7 @@ const pl: SiteContent = {
     stack: "Stack",
     services: "Usługi",
     work: "Projekty",
+    labs: "Projekty własne",
     writing: "Publikacje",
     contact: "Kontakt",
     cta: "Zatrudnij mnie",
@@ -318,6 +354,28 @@ const pl: SiteContent = {
       { t: "Cannabase", tag: "Data · AI", d: "Platforma danych o medycznej marihuanie w Polsce: katalog odmian z profilami terpenowymi i THC/CBD, dostępność i ceny w aptekach niemal na żywo, kliniki wystawiające recepty oraz Dendi - asystent AI (RAG), który sprawdza dostępność w okolicy i proponuje zamienniki o zbliżonym profilu.", dLong: "Polski rynek medycznej marihuany jest rozsypany po cennikach aptek, PDF-ach producentów i zamkniętych grupach pacjentów - Cannabase zbiera go w jedno miejsce. Katalog obejmuje odmiany z profilami terpenowymi i proporcjami THC/CBD, powiązane z niemal na żywo aktualizowaną dostępnością i cenami w aptekach w całym kraju, plus katalog klinik wystawiających recepty. Zautomatyzowane procesy zbierania i normalizacji danych uzgadniają niespójne nazewnictwo między producentami a aptekami, żeby ten sam produkt nie występował pięć razy w pięciu wariantach zapisu. Dendi, wbudowany asystent AI, działa na pipelinie RAG nad tym katalogiem: odpowiada na pytania o konkretną odmianę, sprawdza dostępność w okolicy pacjenta i proponuje zamienniki o zbliżonym profilu terpenowo-kannabinoidowym, gdy czegoś brakuje. Całość na FastAPI i SQLAlchemy, z Postgresem + pgvector na embeddingi i frontendem w Next.js.", stack: ["Python", "FastAPI", "SQLAlchemy", "Postgres + pgvector", "Next.js", "Docker"], outcome: "Rozproszony rynek w jednym miejscu", logo: "/assets/cannabase.svg", url: "https://cannabase.pl/" },
     ],
     cta: "Więcej projektów na LinkedIn",
+  },
+  labs: {
+    eyebrow: "Projekty własne",
+    title: "Jeden pomysł, do samego dna",
+    sub: "Niekomercyjne dema, w których wchodzę w jeden pomysł od początku do końca. Bez klienta, bez terminu - sama inżynieria.",
+    items: [
+      {
+        t: "Mandaflix",
+        tag: "AI · ML",
+        shot: "/assets/mandaflix.png",
+        d: "System rekomendacji filmów w stylu serwisu streamingowego z dwoma niezależnymi mechanizmami AI: spersonalizowanymi rekomendacjami i hybrydowym wyszukiwaniem semantycznym, ukrytymi za interfejsem w stylu Netflixa.",
+        dLong:
+          "Mandaflix to full-stackowy system rekomendacji zbudowany na zbiorze MovieLens, z dwoma systemami ML działającymi równolegle. Rekomendacje opierają się na faktoryzacji macierzy (SVD): wektor gustu użytkownika jest liczony w locie z jego bieżących polubień względem stałych wektorów filmów, więc polubienie natychmiast przestawia ranking kafelków, a zupełnie nowy profil startuje z popularności - bez trenowania na gorącej ścieżce, a osobny proces wsadowy dokłada polubienia z powrotem do modelu. Wyszukiwanie to retrieval hybrydowy, obie połowy obsługiwane przez Postgresa i łączone metodą Reciprocal Rank Fusion: full-text (tsvector, ważony polami, żeby trafienie w tytule biło słowo ukryte w opisie fabuły) plus semantyka (pgvector, cosinus po embeddingach MiniLM z opisów TMDB), więc obsługuje i \"lord\", i \"samotny robot znajduje przyjaźń w kosmosie\". Cztery modele rekomendacji przeszły benchmark na temporalnym podziale per-użytkownik (P/R/NDCG@10), zanim wygrał i trafił na produkcję SVD; panel Insights pokazuje metryki, które konsumenckie UI celowo ukrywa. FastAPI serwuje z jednego origina i API, i zbudowany frontend w React, wystawiony przez Cloudflare Tunnel.",
+        stack: ["Python", "FastAPI", "scikit-learn (SVD)", "Postgres + pgvector", "React + Vite", "Docker"],
+        outcome: "Rekomendacje + hybrydowy retrieval",
+        url: "https://mandaflix.krystianjarmul.dev",
+        repo: "https://github.com/mandacode/ai-movie-recommender",
+      },
+    ],
+    demo: "Demo na żywo",
+    code: "Kod",
+    cta: "Zobacz więcej na GitHubie",
   },
   writing: {
     eyebrow: "Publikacje",

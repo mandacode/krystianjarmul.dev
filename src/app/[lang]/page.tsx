@@ -11,6 +11,7 @@ import { Stack } from "@/components/Stack";
 import { About } from "@/components/About";
 import { Services } from "@/components/Services";
 import { Work } from "@/components/Work";
+import { Labs } from "@/components/Labs";
 import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 import { LangSync } from "@/components/LangSync";
@@ -55,6 +56,7 @@ export default async function LocaleHome({ params }: { params: Promise<Params> }
         <About c={c} />
         <Services c={c} />
         <Work c={c} />
+        <Labs c={c} />
         <Contact c={c} />
       </main>
       <Footer c={c} />
