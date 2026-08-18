@@ -234,6 +234,7 @@ const en: SiteContent = {
       {
         t: "Voice-controlled home",
         tag: "LLM · IoT",
+        shot: "/assets/home-automation.jpg",
         d: "Control your home by voice over Telegram, in plain Polish and with your own device names. A voice note is transcribed, an LLM turns it into a structured intent, and the system flips the relay locally over the LAN - with a hard guarantee it can't invent a device that doesn't exist.",
         dLong:
           "A Telegram voice note goes through Whisper (Groq) to text, then an LLM (Groq gpt-oss-120b) maps it to a JSON intent {action, device_id} and an adapter drives a Shelly Gen3 plug directly over the LAN - no vendor cloud, ~1.5s from recording to relay click. The interesting part is why it doesn't hallucinate devices: two independent barriers. The device_id field is a schema enum generated from the YAML registry on every request, so constrained decoding makes an out-of-list device literally unrepresentable; a second code-level check re-validates against the registry regardless of what the model returns. Safety never depends on model behaviour. Every layer - transcription, understanding, execution - is a swappable protocol (Groq / Ollama / OpenAI, Shelly / Tuya), and the model choices are measured, not assumed: on Groq the 120B model was twice as fast as the 20B.",
@@ -385,6 +386,7 @@ const pl: SiteContent = {
       {
         t: "Dom sterowany głosem",
         tag: "LLM · IoT",
+        shot: "/assets/home-automation.jpg",
         d: "Sterowanie domem głosem przez Telegram, po polsku i własnymi nazwami urządzeń. Głosówka jest transkrybowana, LLM zamienia ją na ustrukturyzowaną intencję, a system klika przekaźnik lokalnie po LAN - z twardą gwarancją, że model nie wymyśli nieistniejącego urządzenia.",
         dLong:
           "Głosówka z Telegrama idzie przez Whisper (Groq) na tekst, potem LLM (Groq gpt-oss-120b) mapuje ją na intencję JSON {action, device_id}, a adapter steruje wtyczką Shelly Gen3 bezpośrednio po LAN - bez chmury producenta, ~1.5 s od nagrania do kliknięcia przekaźnika. Najciekawsze jest to, dlaczego system nie halucynuje urządzeń: dwie niezależne bariery. Pole device_id to enum budowany z rejestru YAML przy każdym zapytaniu, więc constrained decoding czyni urządzenie spoza listy niereprezentowalnym; druga bariera w kodzie i tak waliduje względem rejestru, niezależnie od tego, co zwróci model. Bezpieczeństwo nie zależy od zachowania modelu. Każda warstwa - transkrypcja, rozumienie, wykonanie - to wymienny protokół (Groq / Ollama / OpenAI, Shelly / Tuya), a wybór modeli jest mierzony, nie zakładany: na Groqu model 120B był dwa razy szybszy od 20B.",
