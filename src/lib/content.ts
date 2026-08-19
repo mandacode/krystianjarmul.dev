@@ -223,7 +223,7 @@ const en: SiteContent = {
         t: "Mieszko",
         tag: "ML · Geo",
         shot: "/assets/mieszko.jpg",
-        d: "Asking-price valuation for flats in Rzeszów. Four fields - floor area, rooms, storey and a street address - are enough; from the address alone the model derives a dozen location features from OpenStreetMap. Validation MAPE 6.7%, against 15.5% for a naive baseline.",
+        d: "Asking-price valuation for flats in Rzeszów from floor area, rooms, storey and a street address - and from the address alone the model derives a dozen location features from OpenStreetMap. Validation MAPE 6.7%, against 15.5% for a naive baseline.",
         dLong:
           "The model learns asking prices scraped from four listing portals (Otodom, Morizon, nieruchomosci-online, OLX), deduplicated from 10,363 raw adverts down to 3,219 real flats with a perceptual hash of the photos - because the same flat is relisted by many agents. A dozen features come from the address alone: district and straight-line distances to bus, school, shop, park and the city centre, measured to the edge of each OpenStreetMap polygon. The core discipline is one shared feature-computation code path for both training and serving, guarded by a hash of the POI snapshot so the API refuses to start if the two drift. The regressor is XGBoost with an absolute-error objective (the price target is skewed), and every response carries a disclaimer that asking prices sit ~7.9% above transaction prices. FastAPI + vanilla JS/Leaflet, shipped in Docker behind a Cloudflare Tunnel.",
         stack: ["Python", "XGBoost", "FastAPI", "OpenStreetMap (Overpass)", "Leaflet", "Docker"],
@@ -386,7 +386,7 @@ const pl: SiteContent = {
         t: "Mieszko",
         tag: "ML · Geo",
         shot: "/assets/mieszko.jpg",
-        d: "Wycena ceny ofertowej mieszkań w Rzeszowie. Cztery pola - metraż, pokoje, piętro i adres - wystarczą; z samego adresu model dolicza kilkanaście cech lokalizacji z OpenStreetMap. MAPE walidacyjne 6,7% wobec 15,5% dla naiwnego baseline'u.",
+        d: "Wycena ceny ofertowej mieszkań w Rzeszowie na podstawie metrażu, liczby pokoi, piętra i adresu - z samego adresu model dolicza kilkanaście cech lokalizacji z OpenStreetMap. MAPE walidacyjne 6,7% wobec 15,5% dla naiwnego baseline'u.",
         dLong:
           "Model uczy się cen ofertowych zescrapowanych z czterech portali (Otodom, Morizon, nieruchomosci-online, OLX), odsianych z 10 363 surowych ogłoszeń do 3 219 realnych mieszkań przez perceptualny hash zdjęć - bo to samo mieszkanie wystawia wielu agentów. Kilkanaście cech powstaje z samego adresu: dzielnica i odległości w linii prostej do przystanku, szkoły, sklepu, parku i centrum, liczone do krawędzi wielokąta z OpenStreetMap. Sednem jest jedna wspólna ścieżka liczenia cech dla treningu i serwowania, pilnowana hashem snapshotu POI - API nie wystartuje, jeśli się rozjadą. Regresor to XGBoost z funkcją błędu absolutnego (rozkład ceny jest skośny), a każda odpowiedź niesie disclaimer, że ceny ofertowe są ~7,9% powyżej transakcyjnych. FastAPI + czysty JS/Leaflet, wdrożone w Dockerze za Cloudflare Tunnel.",
         stack: ["Python", "XGBoost", "FastAPI", "OpenStreetMap (Overpass)", "Leaflet", "Docker"],
