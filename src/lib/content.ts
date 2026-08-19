@@ -220,6 +220,18 @@ const en: SiteContent = {
     sub: "Loose, educational projects - I build them to get hands-on with a new technology or to crack a specific problem.",
     items: [
       {
+        t: "Mieszko",
+        tag: "ML · Geo",
+        shot: "/assets/mieszko.jpg",
+        d: "Asking-price valuation for flats in Rzeszów. Four fields - floor area, rooms, storey and a street address - are enough; from the address alone the model derives a dozen location features from OpenStreetMap. Validation MAPE 6.7%, against 15.5% for a naive baseline.",
+        dLong:
+          "The model learns asking prices scraped from four listing portals (Otodom, Morizon, nieruchomosci-online, OLX), deduplicated from 10,363 raw adverts down to 3,219 real flats with a perceptual hash of the photos - because the same flat is relisted by many agents. A dozen features come from the address alone: district and straight-line distances to bus, school, shop, park and the city centre, measured to the edge of each OpenStreetMap polygon. The core discipline is one shared feature-computation code path for both training and serving, guarded by a hash of the POI snapshot so the API refuses to start if the two drift. The regressor is XGBoost with an absolute-error objective (the price target is skewed), and every response carries a disclaimer that asking prices sit ~7.9% above transaction prices. FastAPI + vanilla JS/Leaflet, shipped in Docker behind a Cloudflare Tunnel.",
+        stack: ["Python", "XGBoost", "FastAPI", "OpenStreetMap (Overpass)", "Leaflet", "Docker"],
+        outcome: "A price from four fields",
+        url: "https://mieszko.krystianjarmul.dev",
+        repo: "https://github.com/mandacode/house-price-prediction",
+      },
+      {
         t: "Mandaflix",
         tag: "AI · ML",
         shot: "/assets/mandaflix.png",
@@ -234,7 +246,6 @@ const en: SiteContent = {
       {
         t: "Voice-controlled home",
         tag: "LLM · IoT",
-        shot: "/assets/home-automation.jpg",
         d: "Control your home by voice over Telegram, in plain Polish and with your own device names. A voice note is transcribed, an LLM turns it into a structured intent, and the system flips the relay locally over the LAN - with a hard guarantee it can't invent a device that doesn't exist.",
         dLong:
           "A Telegram voice note goes through Whisper (Groq) to text, then an LLM (Groq gpt-oss-120b) maps it to a JSON intent {action, device_id} and an adapter drives a Shelly Gen3 plug directly over the LAN - no vendor cloud, ~1.5s from recording to relay click. The interesting part is why it doesn't hallucinate devices: two independent barriers. The device_id field is a schema enum generated from the YAML registry on every request, so constrained decoding makes an out-of-list device literally unrepresentable; a second code-level check re-validates against the registry regardless of what the model returns. Safety never depends on model behaviour. Every layer - transcription, understanding, execution - is a swappable protocol (Groq / Ollama / OpenAI, Shelly / Tuya), and the model choices are measured, not assumed: on Groq the 120B model was twice as fast as the 20B.",
@@ -372,6 +383,18 @@ const pl: SiteContent = {
     sub: "Luźne, edukacyjne projekty - buduję je, żeby oswoić nową technologię albo rozgryźć konkretny problem.",
     items: [
       {
+        t: "Mieszko",
+        tag: "ML · Geo",
+        shot: "/assets/mieszko.jpg",
+        d: "Wycena ceny ofertowej mieszkań w Rzeszowie. Cztery pola - metraż, pokoje, piętro i adres - wystarczą; z samego adresu model dolicza kilkanaście cech lokalizacji z OpenStreetMap. MAPE walidacyjne 6,7% wobec 15,5% dla naiwnego baseline'u.",
+        dLong:
+          "Model uczy się cen ofertowych zescrapowanych z czterech portali (Otodom, Morizon, nieruchomosci-online, OLX), odsianych z 10 363 surowych ogłoszeń do 3 219 realnych mieszkań przez perceptualny hash zdjęć - bo to samo mieszkanie wystawia wielu agentów. Kilkanaście cech powstaje z samego adresu: dzielnica i odległości w linii prostej do przystanku, szkoły, sklepu, parku i centrum, liczone do krawędzi wielokąta z OpenStreetMap. Sednem jest jedna wspólna ścieżka liczenia cech dla treningu i serwowania, pilnowana hashem snapshotu POI - API nie wystartuje, jeśli się rozjadą. Regresor to XGBoost z funkcją błędu absolutnego (rozkład ceny jest skośny), a każda odpowiedź niesie disclaimer, że ceny ofertowe są ~7,9% powyżej transakcyjnych. FastAPI + czysty JS/Leaflet, wdrożone w Dockerze za Cloudflare Tunnel.",
+        stack: ["Python", "XGBoost", "FastAPI", "OpenStreetMap (Overpass)", "Leaflet", "Docker"],
+        outcome: "Cena z czterech pól",
+        url: "https://mieszko.krystianjarmul.dev",
+        repo: "https://github.com/mandacode/house-price-prediction",
+      },
+      {
         t: "Mandaflix",
         tag: "AI · ML",
         shot: "/assets/mandaflix.png",
@@ -386,7 +409,6 @@ const pl: SiteContent = {
       {
         t: "Dom sterowany głosem",
         tag: "LLM · IoT",
-        shot: "/assets/home-automation.jpg",
         d: "Sterowanie domem głosem przez Telegram, po polsku i własnymi nazwami urządzeń. Głosówka jest transkrybowana, LLM zamienia ją na ustrukturyzowaną intencję, a system klika przekaźnik lokalnie po LAN - z twardą gwarancją, że model nie wymyśli nieistniejącego urządzenia.",
         dLong:
           "Głosówka z Telegrama idzie przez Whisper (Groq) na tekst, potem LLM (Groq gpt-oss-120b) mapuje ją na intencję JSON {action, device_id}, a adapter steruje wtyczką Shelly Gen3 bezpośrednio po LAN - bez chmury producenta, ~1.5 s od nagrania do kliknięcia przekaźnika. Najciekawsze jest to, dlaczego system nie halucynuje urządzeń: dwie niezależne bariery. Pole device_id to enum budowany z rejestru YAML przy każdym zapytaniu, więc constrained decoding czyni urządzenie spoza listy niereprezentowalnym; druga bariera w kodzie i tak waliduje względem rejestru, niezależnie od tego, co zwróci model. Bezpieczeństwo nie zależy od zachowania modelu. Każda warstwa - transkrypcja, rozumienie, wykonanie - to wymienny protokół (Groq / Ollama / OpenAI, Shelly / Tuya), a wybór modeli jest mierzony, nie zakładany: na Groqu model 120B był dwa razy szybszy od 20B.",
