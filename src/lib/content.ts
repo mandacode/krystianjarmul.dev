@@ -216,8 +216,8 @@ const en: SiteContent = {
   },
   labs: {
     eyebrow: "Side projects",
-    title: "One idea, all the way down",
-    sub: "Non-commercial demos where I go deep on one idea end to end. No client, no deadline - just the engineering.",
+    title: "Building to learn",
+    sub: "Loose, educational projects - I build them to get hands-on with a new technology or to crack a specific problem.",
     items: [
       {
         t: "Mandaflix",
@@ -368,8 +368,8 @@ const pl: SiteContent = {
   },
   labs: {
     eyebrow: "Projekty własne",
-    title: "Jeden pomysł, do samego dna",
-    sub: "Niekomercyjne dema, w których wchodzę w jeden pomysł od początku do końca. Bez klienta, bez terminu - sama inżynieria.",
+    title: "Buduję, żeby się nauczyć",
+    sub: "Luźne, edukacyjne projekty - buduję je, żeby oswoić nową technologię albo rozgryźć konkretny problem.",
     items: [
       {
         t: "Mandaflix",
